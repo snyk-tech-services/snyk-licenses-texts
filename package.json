@@ -39,7 +39,7 @@
     "debug": "4.1.1",
     "lodash": "4.17.20",
     "node-fetch": "2.6.0",
-    "snyk-api-ts-client": "1.4.1",
+    "snyk-api-ts-client": "1.5.0",
     "snyk-config": "^3.0.0",
     "source-map-support": "^0.5.16",
     "tslib": "2.0.1"
