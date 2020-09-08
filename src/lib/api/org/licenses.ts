@@ -1,19 +1,10 @@
 import 'source-map-support/register';
 import * as debugLib from 'debug';
 import * as snykApiSdk from 'snyk-api-ts-client';
-import { getApiToken } from '../get-api-token';
+import { getApiToken } from '../../get-api-token';
+import { SortBy, Order } from './types';
 
-export enum SortBy {
-  LICENSE = 'license',
-  DEPENDENCIES = 'dependencies',
-  PROJECTS = 'projects',
-  SEVERITY = 'severity',
-}
-
-export enum Order {
-  ASC = 'asc',
-  DESC = 'desc',
-}
+const debug = debugLib('getLicenseDataForOrg');
 
 interface GetLicenseDataOptions {
   sortBy: SortBy;
@@ -36,7 +27,7 @@ export async function getLicenseDataForOrg(
     const licenseData = await snykApiClient.licenses.post(body, sortBy, order);
     return licenseData;
   } catch (e) {
-    debugLib('Failed to fetch licenses' + e);
+    debug('Failed to fetch licenses' + e);
     throw e;
   }
 }

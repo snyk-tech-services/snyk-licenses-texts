@@ -1,6 +1,6 @@
-import { getDependenciesDataForOrg, getLicenseDataForOrg } from '../../src/lib/api/org';
+import { getDependenciesDataForOrg } from '../../src/lib/api/org';
 
-describe('Get org licenses', () => {
+describe('Get org dependencies', () => {
   const OLD_ENV = process.env;
   process.env.SNYK_TOKEN = process.env.SNYK_TEST_TOKEN;
   const ORG_ID = process.env.TEST_ORG_ID as string;
@@ -13,7 +13,11 @@ describe('Get org licenses', () => {
     expect(process.env.ORG_ID).not.toBeNull();
   });
   test('License results are returned from API', async () => {
-    const licenseRes = await getLicenseDataForOrg(ORG_ID);
+    try {
+    const licenseRes = await getDependenciesDataForOrg(ORG_ID);
     expect(licenseRes.results.length > 0).toBeTruthy();
+    } catch(e) {
+      console.log('Failed: ', e)
+    }
   }, 5000);
 });
