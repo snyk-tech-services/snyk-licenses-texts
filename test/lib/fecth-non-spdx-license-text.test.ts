@@ -1,11 +1,10 @@
-import { fetchNonSpdxLicenseText } from '../../src/lib';
+import { fetchNonSpdxLicenseTextAndUrl } from '../../src/lib';
 
 test('ASPSecurityKit-Khosla-Tech license fetched locally as expected', async () => {
-  const licenseText = await fetchNonSpdxLicenseText('ASPSecurityKit-Khosla-Tech');
+  const licenseText = await fetchNonSpdxLicenseTextAndUrl('ASPSecurityKit-Khosla-Tech');
   expect(licenseText).toMatchSnapshot();
 });
 
-test('Failed to fetch a license returns helper text instead', async () => {
-  const licenseText = await fetchNonSpdxLicenseText('AFL-1');
-  expect(licenseText).toMatchSnapshot();
+test('Failed to fetch a license to throw', async () => {
+  expect(fetchNonSpdxLicenseTextAndUrl('AFL-1.')).rejects;
 });

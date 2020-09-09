@@ -15,5 +15,5 @@ describe('Get org dependencies', () => {
   test('License results are returned from API', async () => {
     const licenseRes = await getDependenciesDataForOrg(ORG_ID);
     expect(licenseRes.results.length > 0).toBeTruthy();
-  }, 5000);
+  }, 50000);
 });

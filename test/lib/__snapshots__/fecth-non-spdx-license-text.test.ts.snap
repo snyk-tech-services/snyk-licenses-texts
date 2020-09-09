@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ASPSecurityKit-Khosla-Tech license fetched locally as expected 1`] = `
-"<h1>KHOSLA TECH - END USER AGREEMENT</h1>
+Object {
+  "licenseText": "<h1>KHOSLA TECH - END USER AGREEMENT</h1>
 <p><strong>IMPORTANT – PLEASE READ THIS AGREEMENT!</strong></p>
 <div>
     <ul>
@@ -90,7 +91,7 @@ exports[`ASPSecurityKit-Khosla-Tech license fetched locally as expected 1`] = `
     <p>This Agreement is the entire agreement between End User and Khosla Tech relating to the Products and supersedes all prior or contemporaneous oral or written communications, proposals and representations with respect to the Products or any other subject matter covered by this Agreement. If any provision of this Agreement is held to be void, invalid, unenforceable or illegal, the other provisions shall continue in full force and effect. As used herein, \\"including\\" (and its variants) means \\"including without limitation\\" (and its variants). The parties are independent contractors. This Agreement shall not be construed as constituting either party as a partner of the other or to create any other form of legal association that would give on party the express or implied right, power or authority to create any duty or obligation of the other party.</p>
     <p>Should you have any questions concerning this Agreement, or if you desire to contact Khosla Tech for any reason, please <a href=\\"mailto:sales@ASPSecurityKit.net\\">contact us</a>.</p>
 </div>
-"
+",
+  "licenseUrl": "http://aspsecuritykit.net/end-user-agreement",
+}
 `;
-
-exports[`Failed to fetch a license returns helper text instead 1`] = `"Did not fetch license text successfully."`;

@@ -1,2 +1,2 @@
-export { fetchNonSpdxLicenseText } from './non-spdx';
-export { fetchSpdxLicenseText } from './spdx';
+export { fetchNonSpdxLicenseTextAndUrl } from './non-spdx';
+export { fetchSpdxLicenseTextAndUrl } from './spdx';

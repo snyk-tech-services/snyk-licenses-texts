@@ -1,4 +1,4 @@
-import { getDependenciesDataForOrg, getLicenseDataForOrg } from '../../src/lib/api/org';
+import { getDependenciesDataForOrg } from '../../src/lib/api/org';
 
 describe('Get org licenses', () => {
   const OLD_ENV = process.env;
@@ -13,7 +13,7 @@ describe('Get org licenses', () => {
     expect(process.env.ORG_ID).not.toBeNull();
   });
   test('License results are returned from API', async () => {
-    const licenseRes = await getLicenseDataForOrg(ORG_ID);
+    const licenseRes = await getDependenciesDataForOrg(ORG_ID);
     expect(licenseRes.results.length > 0).toBeTruthy();
-  }, 5000);
+  }, 50000);
 });

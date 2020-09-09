@@ -1,4 +1,3 @@
-import { getDependenciesDataForOrg, getLicenseDataForOrg } from '../../src/lib/api/org';
 import { generateLicenseData } from '../../src/lib';
 
 describe('Get org licenses', () => {
@@ -13,8 +12,16 @@ describe('Get org licenses', () => {
     expect(process.env.SNYK_TOKEN).not.toBeNull();
     expect(process.env.ORG_ID).not.toBeNull();
   });
-  test('License results are returned from API', async () => {
+  test('License data is generated as expected', async () => {
     const licenseRes = await generateLicenseData(ORG_ID, {});
-    expect(Object.keys(licenseRes).length > 0).toBeTruthy();
-  }, 5000);
+    expect(Object.keys(licenseRes).length >= 11).toBeTruthy();
+    expect(licenseRes['Unknown'].licenseUrl).toBeUndefined();
+    expect(licenseRes['Unknown'].licenseText).toBeUndefined();
+    expect(licenseRes['Unlicense'].licenseText).not.toBeNull();
+    expect(licenseRes['Unlicense'].licenseUrl).toBe('https://spdx.org/licenses/Unlicense.html');
+    expect(licenseRes['Unlicense'].licenseUrl).toBe('https://spdx.org/licenses/Unlicense.html');
+    expect(licenseRes['Unlicense'].dependencies[0].copyright).not.toBeNull();
+    expect(licenseRes['Unlicense'].dependencies[0].issuesMedium).not.toBeNull();
+    expect(licenseRes['Unlicense'].dependencies[0].latestVersion).not.toBeNull();
+  }, 50000);
 });

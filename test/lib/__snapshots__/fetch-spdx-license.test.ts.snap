@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AFL-1.1 license is as expected 1`] = `
-"
+Object {
+  "licenseText": "
 
   
     
@@ -206,7 +207,7 @@ Permission is hereby granted to copy and distribute this license without modific
 
   
 
-"
+",
+  "licenseUrl": "https://spdx.org/licenses/AFL-1.1.html",
+}
 `;
-
-exports[`Failed to fetch a license returns helper text instead 1`] = `"Did not fetch license text successfully. See the license text at: https://spdx.org/licenses/AFL-1..html"`;
