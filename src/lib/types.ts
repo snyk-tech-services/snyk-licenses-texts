@@ -1,3 +1,12 @@
+export interface Dependency {
+  id: string; // example: pako@1.0.11
+  name: string;
+  version: string;
+  packageManager: string;
+}
+//TODO: finish the type
+export interface EnrichedDependency extends Dependency {}
+
 export interface LicenseReportDataEntry {
   // TODO: what if it is a dual license?
   /**

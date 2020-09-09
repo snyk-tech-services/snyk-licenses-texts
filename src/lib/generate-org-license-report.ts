@@ -5,7 +5,7 @@ export * from './license-text';
 export * from './get-api-token';
 import { getLicenseDataForOrg, getDependenciesDataForOrg } from './api/org';
 import { fetchSpdxLicenseTextAndUrl, fetchNonSpdxLicenseTextAndUrl } from './license-text';
-import { LicenseReportDataEntry } from './types';
+import { LicenseReportDataEntry, EnrichedDependency, Dependency } from './types';
 
 const debug = debugLib('generateOrgLicensesReport');
 
@@ -75,13 +75,6 @@ export async function generateLicenseData(
   }
 }
 
-interface Dependency {
-  id: string; // example: pako@1.0.11
-  name: string;
-  version: string;
-  packageManager: string;
-}
-interface EnrichedDependency extends Dependency {}
 
 function enrichDependencies(
   dependencies: Dependency[],
