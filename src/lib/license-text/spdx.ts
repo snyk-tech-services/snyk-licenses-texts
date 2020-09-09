@@ -2,10 +2,11 @@ import 'source-map-support/register';
 import * as fetch from 'node-fetch';
 import * as debugLib from 'debug';
 import * as cheerio from 'cheerio';
-import { generateErrorLicenseText } from './error-license-text';
 
-export async function fetchSpdxLicenseText(licenseId: string): Promise<string> {
-  const debug = debugLib('fetchSpdxLicenseText')
+export async function fetchSpdxLicenseTextAndUrl(
+  licenseId: string,
+): Promise<{ licenseText: string; licenseUrl: string }> {
+  const debug = debugLib('fetchSpdxLicenseText');
   const licenseUrl = `https://spdx.org/licenses/${licenseId}.html`;
   try {
     const res = await fetch(licenseUrl);
@@ -15,9 +16,9 @@ export async function fetchSpdxLicenseText(licenseId: string): Promise<string> {
     }
     const $ = cheerio.load(rawHtml);
     const licenseText = $('body').text();
-    return licenseText;
+    return { licenseText, licenseUrl };
   } catch (e) {
     debug(`Did not fetch license text successfully. Error: ${e}`);
+    throw e;
   }
-  return generateErrorLicenseText(licenseUrl);
 }
