@@ -1,4 +1,4 @@
-import { fetchSpdxLicenseTextAndUrl } from '../../src/lib';
+import { fetchSpdxLicenseTextAndUrl } from '../../src/lib/generate-org-license-report';
 
 test('AFL-1.1 license is as expected', async () => {
   const licenseText = await fetchSpdxLicenseTextAndUrl('AFL-1.1');

@@ -1,7 +1,9 @@
-import { fetchNonSpdxLicenseTextAndUrl } from '../../src/lib';
+import { fetchNonSpdxLicenseTextAndUrl } from '../../src/lib/license-text';
 
 test('ASPSecurityKit-Khosla-Tech license fetched locally as expected', async () => {
-  const licenseText = await fetchNonSpdxLicenseTextAndUrl('ASPSecurityKit-Khosla-Tech');
+  const licenseText = await fetchNonSpdxLicenseTextAndUrl(
+    'ASPSecurityKit-Khosla-Tech',
+  );
   expect(licenseText).toMatchSnapshot();
 });
 

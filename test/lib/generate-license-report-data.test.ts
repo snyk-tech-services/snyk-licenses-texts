@@ -1,4 +1,4 @@
-import { generateLicenseData } from '../../src/lib';
+import { generateLicenseData } from '../../src/lib/generate-org-license-report';
 
 describe('Get org licenses', () => {
   const OLD_ENV = process.env;
