@@ -1,5 +1,5 @@
 import { getApiToken } from '../lib/get-api-token';
-import { generateOrgLicensesReport } from '../lib/generate-org-license-report';
+import { generateLicenseData } from '../lib/generate-org-license-report';
 
 export const command = 'json';
 export const desc = 'Generate org licenses & dependencies data in JSON format';
@@ -17,7 +17,7 @@ export async function handler(argv: { orgPublicId: string }) {
     getApiToken();
     // TODO: define and pass options to help filter the response
     // based on filters available in API
-    const data = await generateOrgLicensesReport(argv.orgPublicId, {});
+    const data = await generateLicenseData(argv.orgPublicId, {});
     console.log(JSON.stringify(data));
   } catch (e) {
     console.error(e);

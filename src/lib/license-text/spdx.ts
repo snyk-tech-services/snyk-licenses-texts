@@ -6,7 +6,7 @@ import * as cheerio from 'cheerio';
 export async function fetchSpdxLicenseTextAndUrl(
   licenseId: string,
 ): Promise<{ licenseText: string; licenseUrl: string }> {
-  const debug = debugLib('fetchSpdxLicenseText');
+  const debug = debugLib('snyk-licenses:fetchSpdxLicenseText');
   const licenseUrl = `https://spdx.org/licenses/${licenseId}.html`;
   try {
     const res = await fetch(licenseUrl);

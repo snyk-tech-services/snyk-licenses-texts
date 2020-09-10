@@ -6,7 +6,7 @@ import * as path from 'path';
 export async function fetchNonSpdxLicenseTextAndUrl(
   licenseId: string,
 ): Promise<{ licenseText: string; licenseUrl: string }> {
-  const debug = debugLib('fetchNonSpdxLicenseText');
+  const debug = debugLib('snyk-licenses:fetchNonSpdxLicenseText');
   const fileName = `licenses/${licenseId}.html`;
   try {
     const licenseText = await fs.readFileSync(

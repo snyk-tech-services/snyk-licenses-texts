@@ -11,11 +11,15 @@
     "test:unit": "jest",
     "test:coverage": "npm run test:unit -- --coverage",
     "test:watch": "tsc-watch --onSuccess 'npm run test:unit'",
-    "build": "tsc",
-    "build-watch": "tsc -w",
+    "build": "tsc && npm run copy:templates",
+    "build-watch": "tsc -w && npm run copy:templates",
     "prepare": "npm run build",
     "snyk-test": "snyk test",
-    "pkg-binaries": "npx pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64 --out-path ./dist/binaries"
+    "pkg-binaries": "npx pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64 --out-path ./dist/binaries",
+    "copy:templates": "cpx 'src/**/*.hbs' ./dist"
+  },
+  "bin": {
+    "snyk-licenses-report": "dist/index.js"
   },
   "types": "./dist/index.d.ts",
   "repository": {
@@ -25,11 +29,12 @@
   "author": "Snyk Tech Services",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "files": [
     "bin",
-    "dist"
+    "dist",
+    "src/lib/generate-output/html/templates"
   ],
   "homepage": "https://github.com/snyk-tech-services/snyk-licenses-texts#readme",
   "dependencies": {
@@ -44,9 +49,11 @@
     "snyk-config": "^3.0.0",
     "source-map-support": "^0.5.16",
     "tslib": "2.0.1",
-    "yargs": "16.0.2"
+    "yargs": "16.0.2",
+    "yargs-command-config": "1.0.5"
   },
   "devDependencies": {
+    "cpx": "1.5.0",
     "@types/jest": "26.0.13",
     "@types/lodash": "4.14.161",
     "@types/node": "14.6.3",
@@ -64,6 +71,9 @@
   "pkg": {
     "scripts": [
       "dist/**/*.js"
+    ],
+    "assets": [
+      "src/**/templates/*.hbs"
     ]
   },
   "release": {

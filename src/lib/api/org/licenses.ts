@@ -4,7 +4,7 @@ import * as snykApiSdk from 'snyk-api-ts-client';
 import { getApiToken } from '../../get-api-token';
 import { SortBy, Order } from './types';
 
-const debug = debugLib('getLicenseDataForOrg');
+const debug = debugLib('snyk-licenses:getLicenseDataForOrg');
 
 interface GetLicenseDataOptions {
   sortBy: SortBy;
