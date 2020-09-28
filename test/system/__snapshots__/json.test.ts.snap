@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`\`snyk-licenses-report json <...>\` Shows error when missing --orgPublicId 1`] = `
-"Command failed: node ./dist/index.js json
+"Command failed: DEBUG=* node ./dist/index.js json
 index.js json
 
 Generate org licenses & dependencies data in JSON format
@@ -10,6 +10,8 @@ Options:
   --version      Show version number                                   [boolean]
   --help         Show help                                             [boolean]
   --orgPublicId                                                       [required]
+  --view         How should the data be represented. Defaults to a license based
+                 view.                                 [default: \\"org-licenses\\"]
 
 Missing required argument: orgPublicId"
 `;

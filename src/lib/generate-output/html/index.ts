@@ -6,6 +6,7 @@ import * as debugLib from 'debug';
 import { LicenseReportData } from '../../generate-org-license-report';
 
 const debug = debugLib('snyk-licenses:generateHtmlReport');
+const DEFAULT_TEMPLATE = './templates/licenses-view.hbs';
 
 export const enum SupportedViews {
   ORG_LICENSES = 'org-licenses',
@@ -15,19 +16,25 @@ export const enum SupportedViews {
 
 export async function generateHtmlReport(
   data: LicenseReportData,
-  templateOverridePath: string,
-  view: SupportedViews,
+  templateOverridePath: string | undefined = undefined,
+  view: SupportedViews = SupportedViews.ORG_LICENSES,
 ) {
   // TODO: add any helpers & data transformations that are useful here
-
+  debug('ℹ️  Generating HTML report');
   const hbsTemplate = selectTemplate(view, templateOverridePath);
+  debug(
+    `✅ Using template ${
+      hbsTemplate === DEFAULT_TEMPLATE ? 'default template' : hbsTemplate
+    }`,
+  );
   await registerPeerPartial(hbsTemplate, 'inline-css');
+  debug(`✅ Registered Handlebars.js partials`);
   const htmlTemplate = await compileTemplate(hbsTemplate);
-  return htmlTemplate({hello: 1});
+  debug(`✅ Compiled template ${hbsTemplate}`);
+  return htmlTemplate(data);
 }
 
-function selectTemplate(view, templateOverride): string {
-  const DEFAULT_TEMPLATE = './templates/licenses-view.hbs';
+function selectTemplate(view: SupportedViews, templateOverride?): string {
   switch (view) {
     case SupportedViews.ORG_LICENSES:
       return templateOverride || DEFAULT_TEMPLATE;
@@ -51,7 +58,9 @@ async function registerPeerPartial(
 async function compileTemplate(
   fileName: string,
 ): Promise<HandlebarsTemplateDelegate> {
-  return readFile(path.resolve(__dirname, fileName), 'utf8').then(Handlebars.compile);
+  return readFile(path.resolve(__dirname, fileName), 'utf8').then(
+    Handlebars.compile,
+  );
 }
 
 function readFile(filePath: string, encoding: string): Promise<string> {

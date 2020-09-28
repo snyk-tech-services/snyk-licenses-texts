@@ -1,7 +1,16 @@
 import * as debugLib from 'debug';
+import * as pathLib from 'path';
 import { getApiToken } from '../lib/get-api-token';
-import { LicenseReportData, generateLicenseData } from '../lib/generate-org-license-report';
-import { generateHtmlReport, generatePdfReport, SupportedViews } from '../lib/generate-output';
+import {
+  LicenseReportData,
+  generateLicenseData,
+} from '../lib/generate-org-license-report';
+import {
+  generateHtmlReport,
+  generatePdfReport,
+  SupportedViews,
+} from '../lib/generate-output';
+import { writeContentsToFile } from '../lib/write-contents-to-file';
 const debug = debugLib('snyk-licenses:generate');
 
 const outputHandlers = {
@@ -20,22 +29,24 @@ export const builder = {
   orgPublicId: {
     required: true,
     default: undefined,
-    desc: 'Public id of the organization in Snyk (available on organization settings)'
+    desc:
+      'Public id of the organization in Snyk (available on organization settings)',
   },
   template: {
     default: undefined,
-    desc: 'Path to custom Handelbars.js template file (*.hbs)'
+    desc: 'Path to custom Handelbars.js template file (*.hbs)',
   },
   outputFormat: {
     default: OutputFormat.HTML,
     desc: 'Report format',
     // TODO: add also PDF when ready
-    options: [OutputFormat.HTML]
+    options: [OutputFormat.HTML],
   },
   view: {
     // TODO: add also dependency based view when ready
     default: SupportedViews.ORG_LICENSES,
-    desc: 'How should the data be represented. Defaults to a license based view.',
+    desc:
+      'How should the data be represented. Defaults to a license based view.',
   },
 };
 export const aliases = ['g'];
@@ -57,7 +68,14 @@ export async function handler(argv: {
       orgPublicId,
     );
     const generateReportFunc = outputHandlers[outputFormat];
-    return await generateReportFunc(licenseData, template, view);
+    const res = await generateReportFunc(licenseData, template, view);
+    if (res) {
+      const outputFileName = `${orgPublicId}-${view}.html`;
+      const outputFile = pathLib.resolve(__dirname, outputFileName);
+      debug(`ℹ️ Saving generated report to ${outputFile}`);
+      writeContentsToFile(res, outputFile);
+      console.log('License report saved at ' + outputFile);
+    }
   } catch (e) {
     console.error(e);
   }
