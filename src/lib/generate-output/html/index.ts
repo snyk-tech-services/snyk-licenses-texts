@@ -1,7 +1,11 @@
 import * as Handlebars from 'handlebars';
 import * as path from 'path';
 import * as fs from 'fs';
+import * as debugLib from 'debug';
+
 import { LicenseReportData } from '../../generate-org-license-report';
+
+const debug = debugLib('snyk-licenses:generateHtmlReport');
 
 export const enum SupportedViews {
   ORG_LICENSES = 'org-licenses',

@@ -27,7 +27,7 @@ export async function getLicenseDataForOrg(
     const licenseData = await getAllLicensesData(snykApiClient, body, sortBy, order);
     return licenseData;
   } catch (e) {
-    debug('Failed to fetch licenses' + e);
+    debug('❌ Failed to fetch licenses' + e);
     throw e;
   }
 }

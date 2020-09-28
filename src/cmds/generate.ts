@@ -29,9 +29,11 @@ export const builder = {
   outputFormat: {
     default: OutputFormat.HTML,
     desc: 'Report format',
+    // TODO: add also PDF when ready
     options: [OutputFormat.HTML]
   },
   view: {
+    // TODO: add also dependency based view when ready
     default: SupportedViews.ORG_LICENSES,
     desc: 'How should the data be represented. Defaults to a license based view.',
   },
@@ -47,7 +49,7 @@ export async function handler(argv: {
   try {
     const { orgPublicId, outputFormat, template, view } = argv;
     debug(
-      'Options: ' +
+      'ℹ️  Options: ' +
         JSON.stringify({ orgPublicId, outputFormat, template, view }),
     );
     getApiToken();

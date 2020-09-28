@@ -17,20 +17,20 @@ export async function generateLicenseData(
   orgPublicId: string,
   options?,
 ): Promise<LicenseReportData> {
-  debug(`Generating license data for Org:${orgPublicId}`);
+  debug(`ℹ️  Generating license data for Org:${orgPublicId}`);
 
   try {
     const licenseData = await getLicenseDataForOrg(orgPublicId, options);
-    debug(`Got license API data for Org:${orgPublicId}`);
+    debug(`✅ Got license API data for Org:${orgPublicId}`);
     const dependenciesDataRaw = await getDependenciesDataForOrg(
       orgPublicId,
       options,
     );
-    debug(`Got dependencies API data for Org:${orgPublicId}`);
+    debug(`✅ Got dependencies API data for Org:${orgPublicId}`);
     const licenseReportData: LicenseReportData = {};
     const dependenciesData = _.groupBy(dependenciesDataRaw.results, 'id');
     // TODO: what if 0?
-    debug(`Processing ${licenseData.total} licenses`);
+    debug(`⏳ Processing ${licenseData.total} licenses`);
 
     const dependenciesAll = [];
     for (const license of licenseData.results) {
@@ -55,9 +55,11 @@ export async function generateLicenseData(
         licenseUrl: licenseData?.licenseUrl,
       };
     }
+    debug(`✅ Done processing ${licenseData.total} licenses`);
+
     return licenseReportData;
   } catch (e) {
-    debug('Failed to generate report data', e);
+    debug('❌ Failed to generate report data', e);
     throw e;
   }
 }
@@ -89,12 +91,12 @@ async function getLicenseTextAndUrl(
   try {
     return await fetchSpdxLicenseTextAndUrl(id);
   } catch (e) {
-    debug(`Failed to get license data for as SPDX, trying non-SPDX: ${id}`);
+    debug(`❌ Failed to get license data for as SPDX, trying non-SPDX: ${id}`);
   }
   try {
     return await fetchNonSpdxLicenseTextAndUrl(id);
   } catch (e) {
-    debug(`Failed to get license data as non-SPDX: ${id}`);
+    debug(`❌ Failed to get license data as non-SPDX: ${id}`);
   }
 
   return undefined;

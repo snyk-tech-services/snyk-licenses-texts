@@ -32,7 +32,7 @@ export async function getDependenciesDataForOrg(
     );
     return dependenciesData;
   } catch (e) {
-    debug('Failed to fetch dependencies' + e);
+    debug('❌ Failed to fetch dependencies' + e);
     throw e;
   }
 }

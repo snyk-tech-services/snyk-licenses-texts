@@ -11,9 +11,9 @@ describe('`snyk-licenses-report json <...>`', () => {
     });
   });
   it('Generated JSON data with correct --orgPublicId', async (done) => {
-    exec(`node ${main} json --orgPublicId=${ORG_ID}`, (err, stdout) => {
+    exec(`DEBUG=snyk-license* node ${main} json --orgPublicId=${ORG_ID}`, (err, stdout) => {
       expect(err).toBeNull();
-      console.log({err, stdout})
+      console.log({err, stdout, ORG_ID})
       expect(stdout.trim()).toMatch("BSD-2-Clause");
       done();
     });
