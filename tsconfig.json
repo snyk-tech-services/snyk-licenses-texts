@@ -6,5 +6,5 @@
     "sourceMap": true,
     "declaration": true
   },
-  "include": ["./src/lib/**/*", "./src/**/*", "./src/cmds"]
+  "include": ["./src/**/**/*"]
 }

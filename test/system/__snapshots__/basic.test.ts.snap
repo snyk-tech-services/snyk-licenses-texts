@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`snyk-licenses-report help <...>\` Shows help text as expected 1`] = `
+"index.js <command>
+
+Commands:
+  index.js generate  Generate org licenses & dependencies report in HTML format
+                                                                    [aliases: g]
+  index.js json      Generate org licenses & dependencies data in JSON format
+                                                                    [aliases: j]
+
+Options:
+  --version  Show version number                                       [boolean]
+  --help     Show help                                                 [boolean]"
+`;

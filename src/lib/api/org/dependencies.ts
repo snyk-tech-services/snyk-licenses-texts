@@ -4,7 +4,7 @@ import * as snykApiSdk from 'snyk-api-ts-client';
 import { getApiToken } from '../../get-api-token';
 import { SortBy, Order } from './types';
 
-const debug = debugLib('getDependenciesDataForOrg');
+const debug = debugLib('snyk-licenses:getDependenciesDataForOrg');
 
 interface GetDependenciesDataOptions {
   sortBy: SortBy;
@@ -32,7 +32,7 @@ export async function getDependenciesDataForOrg(
     );
     return dependenciesData;
   } catch (e) {
-    debug('Failed to fetch dependencies' + e);
+    debug('❌ Failed to fetch dependencies' + e);
     throw e;
   }
 }

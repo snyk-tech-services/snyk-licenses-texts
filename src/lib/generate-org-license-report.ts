@@ -7,43 +7,30 @@ import { getLicenseDataForOrg, getDependenciesDataForOrg } from './api/org';
 import { fetchSpdxLicenseTextAndUrl, fetchNonSpdxLicenseTextAndUrl } from './license-text';
 import { LicenseReportDataEntry, EnrichedDependency, Dependency } from './types';
 
-const debug = debugLib('generateOrgLicensesReport');
+const debug = debugLib('snyk-licenses:generateOrgLicensesReport');
 
-interface LicenseReportData {
+export interface LicenseReportData {
   [licenseID: string]: LicenseReportDataEntry;
-}
-
-export async function generateOrgLicensesReport(
-  orgPublicId: string,
-  options,
-): Promise<string> {
-  try {
-    const licenseData: LicenseReportData = await generateLicenseData(
-      orgPublicId,
-      options,
-    );
-    const report = licenseData;
-    return report as any;
-  } catch (e) {
-    debug('Failed to generate report data', e);
-    throw e;
-  }
 }
 
 export async function generateLicenseData(
   orgPublicId: string,
-  options,
+  options?,
 ): Promise<LicenseReportData> {
+  debug(`ℹ️  Generating license data for Org:${orgPublicId}`);
+
   try {
     const licenseData = await getLicenseDataForOrg(orgPublicId, options);
+    debug(`✅ Got license API data for Org:${orgPublicId}`);
     const dependenciesDataRaw = await getDependenciesDataForOrg(
       orgPublicId,
       options,
     );
+    debug(`✅ Got dependencies API data for Org:${orgPublicId}`);
     const licenseReportData: LicenseReportData = {};
     const dependenciesData = _.groupBy(dependenciesDataRaw.results, 'id');
     // TODO: what if 0?
-    debug(`Processing ${licenseData.total} licenses`);
+    debug(`⏳ Processing ${licenseData.total} licenses`);
 
     const dependenciesAll = [];
     for (const license of licenseData.results) {
@@ -68,9 +55,11 @@ export async function generateLicenseData(
         licenseUrl: licenseData?.licenseUrl,
       };
     }
+    debug(`✅ Done processing ${licenseData.total} licenses`);
+
     return licenseReportData;
   } catch (e) {
-    debug('Failed to generate report data', e);
+    debug('❌ Failed to generate report data', e);
     throw e;
   }
 }
@@ -102,12 +91,12 @@ async function getLicenseTextAndUrl(
   try {
     return await fetchSpdxLicenseTextAndUrl(id);
   } catch (e) {
-    debug('Failed to get license data as SPDX, trying non-SPDX');
+    debug(`❌ Failed to get license data for as SPDX, trying non-SPDX: ${id}`);
   }
   try {
     return await fetchNonSpdxLicenseTextAndUrl(id);
   } catch (e) {
-    debug('Failed to get license data as non-SPDX');
+    debug(`❌ Failed to get license data as non-SPDX: ${id}`);
   }
 
   return undefined;

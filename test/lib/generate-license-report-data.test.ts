@@ -1,4 +1,5 @@
 import { generateLicenseData } from '../../src/lib/generate-org-license-report';
+import { generateHtmlReport } from '../../src/lib/generate-output';
 
 describe('Get org licenses', () => {
   const OLD_ENV = process.env;
@@ -24,4 +25,6 @@ describe('Get org licenses', () => {
     expect(licenseRes['Unlicense'].dependencies[0].issuesMedium).not.toBeNull();
     expect(licenseRes['Unlicense'].dependencies[0].latestVersion).not.toBeNull();
   }, 50000);
+
+  test.todo('Test for when API fails aka bad org id provided');
 });
