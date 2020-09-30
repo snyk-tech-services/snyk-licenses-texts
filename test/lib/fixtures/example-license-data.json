@@ -1,0 +1,192 @@
+{
+  "BSD-2-Clause": {
+    "id": "BSD-2-Clause",
+    "severity": "medium",
+    "instructions": "Do not use any package with this license without speaking to anna@legal.com",
+    "dependencies": [
+      {
+        "id": "configstore@5.0.1",
+        "name": "configstore",
+        "version": "5.0.1",
+        "packageManager": "npm",
+        "type": "npm",
+        "issuesHigh": 0,
+        "issuesMedium": 0,
+        "issuesLow": 0,
+        "dependenciesWithIssues": [],
+        "licenses": [
+          {
+            "id": "snyk:lic:npm:configstore:BSD-2-Clause",
+            "title": "BSD-2-Clause license",
+            "license": "BSD-2-Clause"
+          }
+        ],
+        "projects": [
+          {
+            "id": "XXX",
+            "name": "snyk-fixtures/npm-with-single-dep:package.json"
+          }
+        ],
+        "latestVersion": "5.0.1",
+        "latestVersionPublishedDate": "2020-02-13T17:43:52.531Z",
+        "firstPublishedDate": "2012-11-13T15:43:50.942Z",
+        "isDeprecated": false,
+        "copyright": [
+          "Copyright (c) Google"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "id": "XXXX",
+        "name": "snyk-fixtures/npm-with-single-dep:package.json"
+      }
+    ],
+    "licenseText": "\n\n  \n    \n      \n        Linux Foundation Collaborative Projects\n      \n    \n  \n\n  \n    \n      \n        \n      \n      \n      \n        \n          Software Package Data Exchange (SPDX)\n            \n      \n      \n    \n   \n\n    \n      \n      \n  \n\n    \n\n      Home » Licenses\n\n      BSD 2-Clause \"Simplified\" License\n      false\n      Full name\n          BSD 2-Clause \"Simplified\" License\n\n      Short identifier\n          BSD-2-Clause\n\n      Other web pages for this license\n          \n            \n             https://opensource.org/licenses/BSD-2-Clause\n           \n          \n          \n      true\n\n      Notes\n          None\n\n      Text\n\n      \n      \n      \n\n         Copyright (c) <year> <owner>. All rights reserved.\n      \n\n      \n\n      Redistribution and use in source and binary forms, with or without modification, are permitted provided\n         that the following conditions are met:\n\n      \n\n\n            \n1.\n          Redistributions of source code must retain the above copyright notice, this list of conditions\n             and the following disclaimer.\n        \n\n            \n2.\n          Redistributions in binary form must reproduce the above copyright notice, this list of conditions\n             and the following disclaimer in the documentation and/or other materials provided with the\n             distribution.\n        \n\n      THIS SOFTWARE IS PROVIDED BY\n        \nTHE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY\n        \nEXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY\n        AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL\n        \nTHE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR\n        ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\n        LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\n        INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR\n        TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF\n        ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n      \n\n    \n      \n\n      Standard License Header\n      \n        There is no standard license header for the license\n        \n      \n      \n      <<var;name=\"copyright\";original=\"Copyright (c) <year> <owner>. All rights reserved.\";match=\".{0,1000}\">>\n\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\n   <<var;name=\"bullet\";original=\"1.\";match=\".{0,20}\">> Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n\n   <<var;name=\"bullet\";original=\"2.\";match=\".{0,20}\">> Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY <<var;name=\"copyrightHolderAsIs\";original=\"THE COPYRIGHT HOLDERS AND CONTRIBUTORS\";match=\".+\">> \"AS IS\" AND ANY <<var;name=\"express\";original=\"EXPRESS\";match=\"EXPRESS(ED)?\">> OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <<var;name=\"copyrightHolderLiability\";original=\"THE COPYRIGHT HOLDER OR CONTRIBUTORS\";match=\".+\">> BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n      \n\n     \n\n    \n      \n        \n          \n            © 2018          SPDX Workgroup a Linux Foundation Project. All Rights Reserved.        \n            Linux Foundation is a registered trademark of The Linux Foundation. Linux is a registered trademark of Linus Torvalds.\n            Please see our privacy policy and terms of use.\n          \n        \n      \n    \n\n    \n      top of page\n    \n\n  \n\n",
+    "licenseUrl": "https://spdx.org/licenses/BSD-2-Clause.html"
+  },
+  "Unknown": {
+    "id": "Unknown",
+    "severity": "high",
+    "instructions": "Any package with this license is not to be used.",
+    "dependencies": [
+      {
+        "id": "axis:axis-jaxrpc@1.4",
+        "name": "axis:axis-jaxrpc",
+        "version": "1.4",
+        "packageManager": "gradle",
+        "type": "maven",
+        "issuesHigh": 0,
+        "issuesMedium": 0,
+        "issuesLow": 0,
+        "dependenciesWithIssues": [],
+        "licenses": [
+          {
+            "id": "snyk:lic:maven:axis:axis-jaxrpc:Unknown",
+            "title": "Unknown license",
+            "license": "Unknown"
+          }
+        ],
+        "projects": [
+          {
+            "id": "XXX",
+            "name": "snyk-fixtures/tiny-monorepo:gradle/build.gradle"
+          }
+        ],
+        "latestVersion": null,
+        "latestVersionPublishedDate": null,
+        "firstPublishedDate": null,
+        "isDeprecated": null,
+        "copyright": []
+      },
+      {
+        "id": "axis:axis-saaj@1.4",
+        "name": "axis:axis-saaj",
+        "version": "1.4",
+        "packageManager": "gradle",
+        "type": "maven",
+        "issuesHigh": 0,
+        "issuesMedium": 0,
+        "issuesLow": 0,
+        "dependenciesWithIssues": [],
+        "licenses": [
+          {
+            "id": "snyk:lic:maven:axis:axis-saaj:Unknown",
+            "title": "Unknown license",
+            "license": "Unknown"
+          }
+        ],
+        "projects": [
+          {
+            "id": "XXX",
+            "name": "snyk-fixtures/tiny-monorepo:gradle/build.gradle"
+          }
+        ],
+        "latestVersion": null,
+        "latestVersionPublishedDate": null,
+        "firstPublishedDate": null,
+        "isDeprecated": null,
+        "copyright": []
+      },
+      {
+        "id": "axis:axis-wsdl4j@1.5.1",
+        "name": "axis:axis-wsdl4j",
+        "version": "1.5.1",
+        "packageManager": "gradle",
+        "type": "maven",
+        "issuesHigh": 0,
+        "issuesMedium": 0,
+        "issuesLow": 0,
+        "dependenciesWithIssues": [],
+        "licenses": [
+          {
+            "id": "snyk:lic:maven:axis:axis-wsdl4j:Unknown",
+            "title": "Unknown license",
+            "license": "Unknown"
+          }
+        ],
+        "projects": [
+          {
+            "id": "XXX",
+            "name": "snyk-fixtures/tiny-monorepo:gradle/build.gradle"
+          }
+        ],
+        "latestVersion": null,
+        "latestVersionPublishedDate": null,
+        "firstPublishedDate": null,
+        "isDeprecated": null,
+        "copyright": []
+      }
+    ],
+    "projects": [
+      {
+        "id": "XXX",
+        "name": "snyk-fixtures/tiny-monorepo:gradle/build.gradle"
+      }
+    ]
+  },
+  "Unlicense": {
+    "id": "Unlicense",
+    "severity": "none",
+    "instructions": "",
+    "dependencies": [
+      {
+        "id": "tweetnacl@0.14.5",
+        "name": "tweetnacl",
+        "version": "0.14.5",
+        "packageManager": "npm",
+        "type": "npm",
+        "issuesHigh": 0,
+        "issuesMedium": 0,
+        "issuesLow": 0,
+        "dependenciesWithIssues": [],
+        "licenses": [
+          {
+            "id": "snyk:lic:npm:tweetnacl:Unlicense",
+            "title": "Unlicense license",
+            "license": "Unlicense"
+          }
+        ],
+        "projects": [
+          {
+            "id": "XXX",
+            "name": "snyk-fixtures/npm-with-single-dep:package.json"
+          }
+        ],
+        "latestVersion": "1.0.3",
+        "latestVersionPublishedDate": "2020-02-10T19:49:05.829Z",
+        "firstPublishedDate": "2014-07-08T17:17:59.887Z",
+        "isDeprecated": false,
+        "copyright": []
+      }
+    ],
+    "projects": [
+      {
+        "id": "XXX",
+        "name": "snyk-fixtures/npm-with-single-dep:package.json"
+      }
+    ],
+    "licenseText": "\n\n  \n    \n      \n        Linux Foundation Collaborative Projects\n      \n    \n  \n\n  \n    \n      \n        \n      \n      \n      \n        \n          Software Package Data Exchange (SPDX)\n            \n      \n      \n    \n   \n\n    \n      \n      \n  \n\n    \n\n      Home » Licenses\n\n      The Unlicense\n      false\n      Full name\n          The Unlicense\n\n      Short identifier\n          Unlicense\n\n      Other web pages for this license\n          \n            \n             https://unlicense.org/\n           \n          \n          \n      true\n\n      Notes\n          This is a public domain dedication\n\n      Text\n\n      \n      \n      This is free and unencumbered software released into the public domain.\n\n      Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in\n         source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any\n         means.\n\n      In jurisdictions that recognize copyright laws, the author or authors of this software dedicate any and\n         all copyright interest in the software to the public domain. We make this dedication for the benefit\n         of the public at large and to the detriment of our heirs and\n        successors. We intend this dedication to be an overt act of relinquishment in perpetuity of all\n             present and future rights to this software under copyright law.\n      \n\n      THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT\n         LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN\n         NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\n         OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR\n         OTHER DEALINGS IN THE SOFTWARE.\n\n      For more information, please refer to <https://unlicense.org/>\n\n    \n      \n\n      Standard License Header\n      \n        There is no standard license header for the license\n        \n      \n      \n      This is free and unencumbered software released into the public domain.\n\nAnyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.\n\nIn jurisdictions that recognize copyright laws, the author or authors of this software dedicate any and all copyright interest in the software to the public domain. We make this dedication for the benefit of the public at large and to the detriment of our heirs and successors. We intend this dedication to be an overt act of relinquishment in perpetuity of all present and future rights to this software under copyright law.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<<beginOptional>> For more information, please refer to <https://unlicense.org/><<endOptional>>\n      \n\n     \n\n    \n      \n        \n          \n            © 2018          SPDX Workgroup a Linux Foundation Project. All Rights Reserved.        \n            Linux Foundation is a registered trademark of The Linux Foundation. Linux is a registered trademark of Linus Torvalds.\n            Please see our privacy policy and terms of use.\n          \n        \n      \n    \n\n    \n      top of page\n    \n\n  \n\n",
+    "licenseUrl": "https://spdx.org/licenses/Unlicense.html"
+  }
+}

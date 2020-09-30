@@ -1,7 +1,7 @@
-import {
-  generateHtmlReport,
-} from '../../src/lib/generate-output';
-import { generateLicenseData } from '../../src/lib/generate-org-license-report';
+import { generateHtmlReport } from '../../src/lib/generate-output';
+import { loadJson } from '../load-json';
+import { LicenseReportData } from '../../src/lib/generate-org-license-report';
+
 describe('Generate HTML report', () => {
   const OLD_ENV = process.env;
   process.env.SNYK_TOKEN = process.env.SNYK_TEST_TOKEN;
@@ -15,8 +15,10 @@ describe('Generate HTML report', () => {
     expect(process.env.ORG_ID).not.toBeNull();
   });
   test('License HTML Report is generated as expected', async () => {
-    const licenseRes = await generateLicenseData(ORG_ID, {});
-    const htmlData = await generateHtmlReport(licenseRes);
+    const licenseRes = (loadJson(
+      __dirname + '/fixtures/example-license-data.json',
+    ) as unknown) as LicenseReportData;
+    const htmlData = await generateHtmlReport(ORG_ID, licenseRes);
     expect(htmlData).toMatchSnapshot();
   }, 50000);
 
