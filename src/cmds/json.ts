@@ -2,7 +2,7 @@ import * as debugLib from 'debug';
 
 import { getApiToken } from '../lib/get-api-token';
 import { generateLicenseData } from '../lib/generate-org-license-report';
-import { SupportedViews } from '../lib/generate-output';
+import { SupportedViews } from '../lib/types';
 
 const debug = debugLib('snyk-licenses:json');
 

@@ -1,4 +1,4 @@
-import { generateHtmlReport } from '../../src/lib/generate-output';
+import { generateHtmlReport } from '../../src/lib/generate-report';
 import { loadJson } from '../load-json';
 import { LicenseReportData } from '../../src/lib/generate-org-license-report';
 
@@ -18,7 +18,17 @@ describe('Generate HTML report', () => {
     const licenseRes = (loadJson(
       __dirname + '/fixtures/example-license-data.json',
     ) as unknown) as LicenseReportData;
-    const htmlData = await generateHtmlReport(ORG_ID, licenseRes);
+    const orgData = {
+      name: "org",
+      id: 'avd-scv',
+      slug: 'org',
+      url: 'https://snyk.io/org/org',
+      group: {
+        name: 'group',
+        id: 'group-1',
+      },
+    }
+    const htmlData = await generateHtmlReport(ORG_ID, licenseRes, orgData);
     expect(htmlData).toMatchSnapshot();
   }, 50000);
 

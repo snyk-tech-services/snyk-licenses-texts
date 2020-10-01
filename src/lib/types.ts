@@ -129,3 +129,10 @@ export interface DependencyData {
   copyright?: string[];
 }
 [];
+
+
+export const enum SupportedViews {
+  ORG_LICENSES = 'org-licenses',
+  // TODO: support later
+  // PROJECT_DEPENDENCIES = 'project-dependencies',
+}

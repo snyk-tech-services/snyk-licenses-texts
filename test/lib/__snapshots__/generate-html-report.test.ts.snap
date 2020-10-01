@@ -85,12 +85,12 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
     }
 
     .column {
-      flex: 1 0 300px;
+      flex: 1 0 150px;
       max-width: 100%;
     }
 
     .column-large {
-      flex: 1 0 500px;
+      flex: 1 0 300px;
       max-width: 100%;
     }
 
@@ -114,6 +114,10 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
 
     .u-padding--xl {
       padding: 2rem;
+    }
+
+    .overflow-auto {
+      overflow: auto;
     }
   </style>
 </head>
@@ -140,8 +144,8 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
   </header>
 
   <main class=\\"u-padding--xl\\">
-    <h1>Licenses Attribution Report</h1>
-    <h2>Org: <a href=\\"https://app.snyk.io/org/snyk-licences-test-org-do-not-modify\\">Snyk Licences Test Org - do not modify</a></h2>
+    <h1>Snyk Licenses Attribution Report</h1>
+    <h2>Org: <a href=\\"https://snyk.io/org/org\\">org</a></h2>
     <div class=\\"u-padding-top--sm\\">
       <h1 class=\\"license_title license_title--medium\\">
         <a href=\\"https://spdx.org/licenses/BSD-2-Clause.html\\">BSD-2-Clause</a>
@@ -167,8 +171,8 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
               <div class=\\"u-padding--sm dependency\\">
                 configstore@5.0.1
               </div>
-              <div class=\\"u-padding--sm\\">
-                <div class=\\"u-padding-top--sm\\">
+              <div class=\\"u-padding--sm overflow-auto\\">
+                <div class=\\"u-padding-top--sm overflow-auto\\">
                   Copyright (c) Google
                 </div>
               </div>
@@ -182,10 +186,10 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
           <strong>Projects in Snyk</strong>
         </div>
         <div class=\\"u-padding--sm\\">
-          <a class=\\"u-padding-top--sm\\" href=\\"https://app.snyk.io/org/snyk-licences-test-org-do-not-modify/project/XXXX\\">snyk-fixtures/npm-with-single-dep:package.json</a><br>
+          <a class=\\"u-padding-top--sm\\" href=\\"https://snyk.io/org/org/project/XXXX\\">snyk-fixtures/npm-with-single-dep:package.json</a><br>
         </div>
       </div>
-      <div class=\\"border-left\\">
+      <div class=\\"border-left overflow-auto\\">
         <div class=\\"border-bottom u-padding--sm\\">
           <strong>License Text</strong>
         </div>
@@ -357,7 +361,7 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
               <div class=\\"u-padding--sm dependency\\">
                 axis:axis-jaxrpc@1.4
               </div>
-              <div class=\\"u-padding--sm\\">
+              <div class=\\"u-padding--sm overflow-auto\\">
               </div>
             </div>
 
@@ -365,7 +369,7 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
               <div class=\\"u-padding--sm dependency\\">
                 axis:axis-saaj@1.4
               </div>
-              <div class=\\"u-padding--sm\\">
+              <div class=\\"u-padding--sm overflow-auto\\">
               </div>
             </div>
 
@@ -373,7 +377,7 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
               <div class=\\"u-padding--sm dependency\\">
                 axis:axis-wsdl4j@1.5.1
               </div>
-              <div class=\\"u-padding--sm\\">
+              <div class=\\"u-padding--sm overflow-auto\\">
               </div>
             </div>
 
@@ -385,10 +389,10 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
           <strong>Projects in Snyk</strong>
         </div>
         <div class=\\"u-padding--sm\\">
-          <a class=\\"u-padding-top--sm\\" href=\\"https://app.snyk.io/org/snyk-licences-test-org-do-not-modify/project/XXX\\">snyk-fixtures/tiny-monorepo:gradle/build.gradle</a><br>
+          <a class=\\"u-padding-top--sm\\" href=\\"https://snyk.io/org/org/project/XXX\\">snyk-fixtures/tiny-monorepo:gradle/build.gradle</a><br>
         </div>
       </div>
-      <div class=\\"border-left\\">
+      <div class=\\"border-left overflow-auto\\">
         <div class=\\"border-bottom u-padding--sm\\">
           <strong>License Text</strong>
         </div>
@@ -420,7 +424,7 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
               <div class=\\"u-padding--sm dependency\\">
                 tweetnacl@0.14.5
               </div>
-              <div class=\\"u-padding--sm\\">
+              <div class=\\"u-padding--sm overflow-auto\\">
               </div>
             </div>
 
@@ -432,10 +436,10 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
           <strong>Projects in Snyk</strong>
         </div>
         <div class=\\"u-padding--sm\\">
-          <a class=\\"u-padding-top--sm\\" href=\\"https://app.snyk.io/org/snyk-licences-test-org-do-not-modify/project/XXX\\">snyk-fixtures/npm-with-single-dep:package.json</a><br>
+          <a class=\\"u-padding-top--sm\\" href=\\"https://snyk.io/org/org/project/XXX\\">snyk-fixtures/npm-with-single-dep:package.json</a><br>
         </div>
       </div>
-      <div class=\\"border-left\\">
+      <div class=\\"border-left overflow-auto\\">
         <div class=\\"border-bottom u-padding--sm\\">
           <strong>License Text</strong>
         </div>
