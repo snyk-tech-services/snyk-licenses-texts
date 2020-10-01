@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import * as debugLib from 'debug';
 
 import { LicenseReportData } from '../../generate-org-license-report';
+import { getOrgData, OrgData } from '../../get-org-data';
 
 const debug = debugLib('snyk-licenses:generateHtmlReport');
 const DEFAULT_TEMPLATE = './templates/licenses-view.hbs';
@@ -38,7 +39,8 @@ export async function generateHtmlReport(
   const htmlTemplate = await compileTemplate(hbsTemplate);
   debug(`✅ Compiled template ${hbsTemplate}`);
 
-  const transformedData = transformDataFunc[view](orgPublicId, data);
+  const orgData = await getOrgData(orgPublicId);
+  const transformedData = transformDataFunc[view](orgPublicId, data, orgData);
 
   return htmlTemplate(transformedData);
 }
@@ -46,11 +48,13 @@ export async function generateHtmlReport(
 function transformDataForLicenseView(
   orgPublicId: string,
   data: LicenseReportData,
+  orgData: OrgData,
 ): {
   licenses: LicenseReportData;
   orgPublicId: string;
+  orgData: OrgData;
 } {
-  return { licenses: data, orgPublicId };
+  return { licenses: data, orgPublicId, orgData };
 }
 
 // TODO: support later
