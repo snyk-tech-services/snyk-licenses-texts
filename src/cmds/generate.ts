@@ -38,7 +38,7 @@ export const builder = {
   outputFormat: {
     default: OutputFormat.HTML,
     desc: 'Report format',
-    options: [OutputFormat.HTML, OutputFormat.PDF],
+    choices: [OutputFormat.HTML, OutputFormat.PDF],
   },
   view: {
     // TODO: add also dependency based view when ready
