@@ -141,7 +141,7 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
 
   <main class=\\"u-padding--xl\\">
     <h1>Licenses Attribution Report</h1>
-    <h2>Org ID: f35105cf-1aff-449b-8456-259331391dac</h2>
+    <h2>Org: <a href=\\"https://app.snyk.io/org/snyk-licences-test-org-do-not-modify\\">Snyk Licences Test Org - do not modify</a></h2>
     <div class=\\"u-padding-top--sm\\">
       <h1 class=\\"license_title license_title--medium\\">
         <a href=\\"https://spdx.org/licenses/BSD-2-Clause.html\\">BSD-2-Clause</a>
@@ -181,7 +181,9 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
         <div class=\\"border-bottom u-padding--sm\\">
           <strong>Projects in Snyk</strong>
         </div>
-        <div class=\\"u-padding--sm\\">XXXX(snyk-fixtures/npm-with-single-dep:package.json)<br></div>
+        <div class=\\"u-padding--sm\\">
+          <a class=\\"u-padding-top--sm\\" href=\\"https://app.snyk.io/org/snyk-licences-test-org-do-not-modify/project/XXXX\\">snyk-fixtures/npm-with-single-dep:package.json</a><br>
+        </div>
       </div>
       <div class=\\"border-left\\">
         <div class=\\"border-bottom u-padding--sm\\">
@@ -382,7 +384,9 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
         <div class=\\"border-bottom u-padding--sm\\">
           <strong>Projects in Snyk</strong>
         </div>
-        <div class=\\"u-padding--sm\\">XXX(snyk-fixtures/tiny-monorepo:gradle/build.gradle)<br></div>
+        <div class=\\"u-padding--sm\\">
+          <a class=\\"u-padding-top--sm\\" href=\\"https://app.snyk.io/org/snyk-licences-test-org-do-not-modify/project/XXX\\">snyk-fixtures/tiny-monorepo:gradle/build.gradle</a><br>
+        </div>
       </div>
       <div class=\\"border-left\\">
         <div class=\\"border-bottom u-padding--sm\\">
@@ -427,7 +431,9 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
         <div class=\\"border-bottom u-padding--sm\\">
           <strong>Projects in Snyk</strong>
         </div>
-        <div class=\\"u-padding--sm\\">XXX(snyk-fixtures/npm-with-single-dep:package.json)<br></div>
+        <div class=\\"u-padding--sm\\">
+          <a class=\\"u-padding-top--sm\\" href=\\"https://app.snyk.io/org/snyk-licences-test-org-do-not-modify/project/XXX\\">snyk-fixtures/npm-with-single-dep:package.json</a><br>
+        </div>
       </div>
       <div class=\\"border-left\\">
         <div class=\\"border-bottom u-padding--sm\\">

@@ -140,7 +140,7 @@
 
   <main class="u-padding--xl">
     <h1>Licenses Attribution Report</h1>
-    <h2>Org ID: {{orgPublicId}}</h2>
+    <h2>Org: <a href="{{orgData.url}}">{{orgData.name}}</a></h2>
     {{#each licenses}}
     <div class="u-padding-top--sm">
       <h1 class="license_title license_title--{{severity}}">
@@ -187,7 +187,11 @@
         <div class="border-bottom u-padding--sm">
           <strong>Projects in Snyk</strong>
         </div>
-        <div class="u-padding--sm">{{#each projects}}{{id}}({{name}})<br>{{/each}}</div>
+        <div class="u-padding--sm">
+          {{#each projects}}
+          <a class="u-padding-top--sm" href="{{../../orgData.url}}/project/{{id}}">{{name}}</a><br>
+          {{/each}}
+        </div>
       </div>
       <div class="border-left">
         <div class="border-bottom u-padding--sm">
