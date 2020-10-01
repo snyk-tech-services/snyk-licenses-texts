@@ -1,0 +1,64 @@
+{
+  "prepare": [
+    "@semantic-release/npm",
+    {
+      "//": "adds a file to identify a build as a standalone binary",
+      "path": "@semantic-release/exec",
+      "cmd": "echo '' > dist/STANDALONE"
+    },
+    {
+      "//": "build the alpine, macos, linux and windows binaries",
+      "path": "@semantic-release/exec",
+      "cmd": "npx pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64"
+    },
+    {
+      "//": "shasum all binaries",
+      "path": "@semantic-release/exec",
+      "cmd": "shasum -a 256 snyk-licenses-texts-linux > snyk-licenses-texts-linux.sha256 && shasum -a 256 snyk-licenses-texts-macos > snyk-licenses-texts-macos.sha256 && shasum -a 256 snyk-licenses-texts-win.exe > snyk-licenses-texts-win.exe.sha256"
+    },
+    {
+      "//": "removes the file we use to identify a build as a standalone binary",
+      "path": "@semantic-release/exec",
+      "cmd": "rm dist/STANDALONE"
+    }
+  ],
+  "publish": [
+    "@semantic-release/npm",
+    {
+      "path": "@semantic-release/github",
+      "assets": [
+        {
+          "path": "./snyk-licenses-texts-linux",
+          "name": "snyk-licenses-texts-linux",
+          "label": "snyk-licenses-texts-linux"
+        },
+        {
+          "path": "./snyk-licenses-texts-linux.sha256",
+          "name": "snyk-licenses-texts-linux.sha256",
+          "label": "snyk-licenses-texts-linux.sha256"
+        },
+        {
+          "path": "./snyk-licenses-texts-macos",
+          "name": "snyk-licenses-texts-macos",
+          "label": "snyk-licenses-texts-macos"
+        },
+        {
+          "path": "./snyk-licenses-texts-macos.sha256",
+          "name": "snyk-licenses-texts-macos.sha256",
+          "label": "snyk-licenses-texts-macos.sha256"
+        },
+        {
+          "path": "./snyk-licenses-texts-win.exe",
+          "name": "snyk-licenses-texts-win.exe",
+          "label": "snyk-licenses-texts-win.exe"
+        },
+        {
+          "path": "./snyk-licenses-texts-win.exe.sha256",
+          "name": "snyk-licenses-texts-win.exe.sha256",
+          "label": "snyk-licenses-texts-win.exe.sha256"
+        }
+      ]
+    }
+  ],
+  "branches": ["master"]
+}
