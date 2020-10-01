@@ -68,7 +68,7 @@ export async function handler(argv: {
       orgPublicId,
     );
     const generateReportFunc = outputHandlers[outputFormat];
-    const res = await generateReportFunc(licenseData, template, view);
+    const res = await generateReportFunc(orgPublicId, licenseData, template, view);
     if (res) {
       const outputFileName = `${orgPublicId}-${view}.html`;
       const outputFile = pathLib.resolve(__dirname, outputFileName);

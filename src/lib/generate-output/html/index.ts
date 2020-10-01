@@ -14,7 +14,14 @@ export const enum SupportedViews {
   // PROJECT_DEPENDENCIES = 'project-dependencies',
 }
 
+const transformDataFunc = {
+  [SupportedViews.ORG_LICENSES]: transformDataForLicenseView,
+  // TODO: support later
+  // [SupportedViews.PROJECT_DEPENDENCIES]: transformDataForDependencyView,
+};
+
 export async function generateHtmlReport(
+  orgPublicId: string,
   data: LicenseReportData,
   templateOverridePath: string | undefined = undefined,
   view: SupportedViews = SupportedViews.ORG_LICENSES,
@@ -27,12 +34,29 @@ export async function generateHtmlReport(
       hbsTemplate === DEFAULT_TEMPLATE ? 'default template' : hbsTemplate
     }`,
   );
-  await registerPeerPartial(hbsTemplate, 'inline-css');
   debug(`✅ Registered Handlebars.js partials`);
   const htmlTemplate = await compileTemplate(hbsTemplate);
   debug(`✅ Compiled template ${hbsTemplate}`);
-  return htmlTemplate(data);
+
+  const transformedData = transformDataFunc[view](orgPublicId, data);
+
+  return htmlTemplate(transformedData);
 }
+
+function transformDataForLicenseView(
+  orgPublicId: string,
+  data: LicenseReportData,
+): {
+  licenses: LicenseReportData;
+  orgPublicId: string;
+} {
+  return { licenses: data, orgPublicId };
+}
+
+// TODO: support later
+// function transformDataForDependencyView(data: LicenseReportData) {
+//   return data;
+// }
 
 function selectTemplate(view: SupportedViews, templateOverride?): string {
   switch (view) {
@@ -51,7 +75,11 @@ async function registerPeerPartial(
   name: string,
 ): Promise<void> {
   const file = path.join(__dirname, templatePath);
+  debug(`ℹ️  Registering peer partial template ${file}`);
+
   const template = await compileTemplate(file);
+  debug(`✅ Compiled template ${file}`);
+
   Handlebars.registerPartial(name, template);
 }
 

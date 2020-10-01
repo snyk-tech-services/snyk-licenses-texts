@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "target": "ES6",
+    "target": "es2017",
+    "lib": ["esnext"],
     "module": "commonjs",
     "sourceMap": true,
     "declaration": true
