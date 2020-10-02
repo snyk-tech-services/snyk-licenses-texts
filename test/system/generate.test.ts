@@ -22,7 +22,6 @@ describe('`snyk-licenses-report generate <...>`', () => {
       `node ${main} generate --orgPublicId=${ORG_ID}`,
       { env: { SNYK_TOKEN: process.env.SNYK_TEST_TOKEN } },
       (err, stdout) => {
-        console.log({err, stdout})
         expect(err).toBeNull();
         expect(stdout).toMatch('HTML license report saved at');
         done();
@@ -35,7 +34,6 @@ describe('`snyk-licenses-report generate <...>`', () => {
       `node ${main} generate --orgPublicId=${ORG_ID} --outputFormat=pdf`,
       { env: { SNYK_TOKEN: process.env.SNYK_TEST_TOKEN } },
       (err, stdout) => {
-        console.log({err, stdout})
         expect(err).toBeNull();
         expect(stdout).toMatch('PDF license report saved at');
         done();
@@ -47,7 +45,6 @@ describe('`snyk-licenses-report generate <...>`', () => {
       `node ${main} generate --orgPublicId=${ORG_ID}  --template=${__dirname + '/fixtures/custom-view.hbs'}`,
       { env: { SNYK_TOKEN: process.env.SNYK_TEST_TOKEN } },
       (err, stdout) => {
-        console.log({err, stdout})
         expect(err).toBeNull();
         expect(stdout).toMatch('HTML license report saved at');
         done();

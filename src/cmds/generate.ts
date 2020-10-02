@@ -41,7 +41,7 @@ export const builder = {
     choices: [OutputFormat.HTML, OutputFormat.PDF],
   },
   view: {
-    // TODO: add also dependency based view when ready
+    choices: [SupportedViews.ORG_LICENSES, SupportedViews.PROJECT_DEPENDENCIES],
     default: SupportedViews.ORG_LICENSES,
     desc:
       'How should the data be represented. Defaults to a license based view.',

@@ -10,8 +10,6 @@ Options:
   --version      Show version number                                   [boolean]
   --help         Show help                                             [boolean]
   --orgPublicId                                                       [required]
-  --view         How should the data be represented. Defaults to a license based
-                 view.                                 [default: \\"org-licenses\\"]
 
 Missing required argument: orgPublicId"
 `;

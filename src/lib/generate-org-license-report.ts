@@ -5,7 +5,7 @@ export * from './license-text';
 export * from './get-api-token';
 import { getLicenseDataForOrg, getDependenciesDataForOrg } from './api/org';
 import { fetchSpdxLicenseTextAndUrl, fetchNonSpdxLicenseTextAndUrl } from './license-text';
-import { LicenseReportDataEntry, EnrichedDependency, Dependency } from './types';
+import { LicenseReportDataEntry, EnrichedDependency, Dependency, DependencyData } from './types';
 
 const debug = debugLib('snyk-licenses:generateOrgLicensesReport');
 
@@ -29,7 +29,11 @@ export async function generateLicenseData(
     debug(`✅ Got dependencies API data for Org:${orgPublicId}`);
     const licenseReportData: LicenseReportData = {};
     const dependenciesData = _.groupBy(dependenciesDataRaw.results, 'id');
-    // TODO: what if 0?
+
+    if (!licenseData.total) {
+      debug(`ℹ️ Detected 0 licenses`);
+      return licenseReportData;
+    }
     debug(`⏳ Processing ${licenseData.total} licenses`);
 
     const dependenciesAll = [];
@@ -69,9 +73,9 @@ function enrichDependencies(
   dependencies: Dependency[],
   dependenciesData,
 ): EnrichedDependency[] {
-  const enrichDependencies = [];
+  const enrichDependencies: EnrichedDependency [] = [];
   for (const dependency of dependencies) {
-    const dep = dependenciesData[dependency.id];
+    const dep: DependencyData[] = dependenciesData[dependency.id];
     if (dep && dep[0]) {
       enrichDependencies.push({
         ...dependency,
