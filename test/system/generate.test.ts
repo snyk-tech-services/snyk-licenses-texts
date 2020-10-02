@@ -8,7 +8,12 @@ describe('`snyk-licenses-report generate <...>`', () => {
   it('Shows error when missing --orgPublicId', async (done) => {
     exec(
       `node ${main} generate`,
-      { env: { SNYK_TOKEN: process.env.SNYK_TEST_TOKEN } },
+      {
+        env: {
+          PATH: process.env.PATH,
+          SNYK_TOKEN: process.env.SNYK_TEST_TOKEN,
+        },
+      },
       (err, stdout) => {
         expect(stdout).toBe('');
         expect(err.message.trim()).toMatchSnapshot();
@@ -20,7 +25,12 @@ describe('`snyk-licenses-report generate <...>`', () => {
   it('generated the report successfully with default params', (done) => {
     exec(
       `node ${main} generate --orgPublicId=${ORG_ID}`,
-      { env: { SNYK_TOKEN: process.env.SNYK_TEST_TOKEN } },
+      {
+        env: {
+          PATH: process.env.PATH,
+          SNYK_TOKEN: process.env.SNYK_TEST_TOKEN,
+        },
+      },
       (err, stdout) => {
         expect(err).toBeNull();
         expect(stdout).toMatch('HTML license report saved at');
@@ -32,7 +42,12 @@ describe('`snyk-licenses-report generate <...>`', () => {
   it.skip('generated the report successfully as PDF', (done) => {
     exec(
       `node ${main} generate --orgPublicId=${ORG_ID} --outputFormat=pdf`,
-      { env: { SNYK_TOKEN: process.env.SNYK_TEST_TOKEN } },
+      {
+        env: {
+          PATH: process.env.PATH,
+          SNYK_TOKEN: process.env.SNYK_TEST_TOKEN,
+        },
+      },
       (err, stdout) => {
         expect(err).toBeNull();
         expect(stdout).toMatch('PDF license report saved at');
@@ -42,8 +57,14 @@ describe('`snyk-licenses-report generate <...>`', () => {
   }, 50000);
   it('generated the report successfully with custom template', (done) => {
     exec(
-      `node ${main} generate --orgPublicId=${ORG_ID} --template=${__dirname + '/fixtures/custom-view.hbs'}`,
-      { env: { SNYK_TOKEN: process.env.SNYK_TEST_TOKEN } },
+      `node ${main} generate --orgPublicId=${ORG_ID} --template=${__dirname +
+        '/fixtures/custom-view.hbs'}`,
+      {
+        env: {
+          PATH: process.env.PATH,
+          SNYK_TOKEN: process.env.SNYK_TEST_TOKEN,
+        },
+      },
       (err, stdout) => {
         expect(err).toBeNull();
         expect(stdout).toMatch('HTML license report saved at');

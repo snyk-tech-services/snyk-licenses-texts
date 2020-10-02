@@ -4,8 +4,16 @@ import * as _ from 'lodash';
 export * from './license-text';
 export * from './get-api-token';
 import { getLicenseDataForOrg, getDependenciesDataForOrg } from './api/org';
-import { fetchSpdxLicenseTextAndUrl, fetchNonSpdxLicenseTextAndUrl } from './license-text';
-import { LicenseReportDataEntry, EnrichedDependency, Dependency, DependencyData } from './types';
+import {
+  fetchSpdxLicenseTextAndUrl,
+  fetchNonSpdxLicenseTextAndUrl,
+} from './license-text';
+import {
+  LicenseReportDataEntry,
+  EnrichedDependency,
+  Dependency,
+  DependencyData,
+} from './types';
 
 const debug = debugLib('snyk-licenses:generateOrgLicensesReport');
 
@@ -15,7 +23,11 @@ export interface LicenseReportData {
 
 export async function generateLicenseData(
   orgPublicId: string,
-  options?,
+  options?: {
+    filters?: {
+      projects: string[];
+    };
+  },
 ): Promise<LicenseReportData> {
   debug(`ℹ️  Generating license data for Org:${orgPublicId}`);
 
@@ -37,9 +49,10 @@ export async function generateLicenseData(
     debug(`⏳ Processing ${licenseData.total} licenses`);
 
     const dependenciesAll = [];
+
     for (const license of licenseData.results) {
       const dependencies = license.dependencies;
-      if(!dependencies.length) {
+      if (!dependencies.length) {
         continue;
       }
       dependenciesAll.push(...dependencies);
@@ -50,9 +63,7 @@ export async function generateLicenseData(
       if (dependenciesEnriched.length) {
         license.dependencies = dependenciesEnriched;
       }
-      const licenseData = await getLicenseTextAndUrl(
-        license.id,
-      );
+      const licenseData = await getLicenseTextAndUrl(license.id);
       licenseReportData[license.id] = {
         ...(license as any),
         licenseText: licenseData?.licenseText,
@@ -68,12 +79,12 @@ export async function generateLicenseData(
   }
 }
 
-
 function enrichDependencies(
   dependencies: Dependency[],
   dependenciesData,
 ): EnrichedDependency[] {
-  const enrichDependencies: EnrichedDependency [] = [];
+  const enrichDependencies: EnrichedDependency[] = [];
+
   for (const dependency of dependencies) {
     const dep: DependencyData[] = dependenciesData[dependency.id];
     if (dep && dep[0]) {
@@ -82,7 +93,7 @@ function enrichDependencies(
         ...dep[0],
       });
     } else {
-      debug('Dep information not found for ' + dependency.id);
+      debug('Dep information not available from /dependencies API response for ' + dependency.id);
     }
   }
 

@@ -10,6 +10,8 @@ Options:
   --version      Show version number                                   [boolean]
   --help         Show help                                             [boolean]
   --orgPublicId                                                       [required]
+  --project      Project ID to filter the results by. E.g. --project=uuid
+                 --project=uuid2                                   [default: []]
 
 Missing required argument: orgPublicId"
 `;
