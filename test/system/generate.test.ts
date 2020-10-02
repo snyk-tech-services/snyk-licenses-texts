@@ -42,9 +42,18 @@ describe('`snyk-licenses-report generate <...>`', () => {
       },
     );
   }, 50000);
-  it.todo('generated the report successfully with custom template');
-  it.todo('generated the report successfully with custom template');
-
+  it('generated the report successfully with custom template', (done) => {
+    exec(
+      `node ${main} generate --orgPublicId=${ORG_ID}  --template=${__dirname + '/fixtures/custom-view.hbs'}`,
+      { env: { SNYK_TOKEN: process.env.SNYK_TEST_TOKEN } },
+      (err, stdout) => {
+        console.log({err, stdout})
+        expect(err).toBeNull();
+        expect(stdout).toMatch('HTML license report saved at');
+        done();
+      },
+    );
+  }, 50000);
   it.todo('API is down');
   it.todo('Requested org has no licenses policy');
 });
