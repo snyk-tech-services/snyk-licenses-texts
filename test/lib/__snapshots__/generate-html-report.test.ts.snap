@@ -894,7 +894,7 @@ exports[`Generate HTML report License HTML Report is generated as expected with 
     <h2>Organization: <a href=\\"https://snyk.io/org/org\\">org</a></h2>
     <section class=\\"project-section\\">
       <h1>
-        Project (1/2): <a href=\\"https://snyk.io/org/org/project/\\">snyk-fixtures/npm-with-single-dep:package.json</a>
+        Project (1/2): <a href=\\"https://snyk.io/org/org/project/XXXX\\">snyk-fixtures/npm-with-single-dep:package.json</a>
       </h1>
         <div class=\\"u-padding-top--sm\\">
           <h2 class=\\"license_title license_title--medium\\">
@@ -1081,7 +1081,7 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
     </section>
     <section class=\\"project-section\\">
       <h1>
-        Project (2/2): <a href=\\"https://snyk.io/org/org/project/\\">snyk-fixtures/tiny-monorepo:gradle/build.gradle</a>
+        Project (2/2): <a href=\\"https://snyk.io/org/org/project/XXX\\">snyk-fixtures/tiny-monorepo:gradle/build.gradle</a>
       </h1>
         <div class=\\"u-padding-top--sm\\">
           <h2 class=\\"license_title license_title--high\\">

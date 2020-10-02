@@ -53,6 +53,7 @@ interface ProjectsReportData {
   [projectId: string]: {
     projectName: string;
     projectIndex: number;
+    projectId: string;
     licenses: {
       [licenseId: string]: LicenseReportDataEntry;
     };
@@ -80,6 +81,7 @@ function transformDataForDependencyView(
         totalProjects += 1;
         projectData[project.id] = {
           projectIndex: totalProjects,
+          projectId: project.id,
           projectName: project.name,
           licenses: {
             [licenseId]: licenseData,
