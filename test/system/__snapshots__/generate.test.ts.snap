@@ -12,7 +12,7 @@ Options:
   --orgPublicId   Public id of the organization in Snyk (available on
                   organization settings)                              [required]
   --template      Path to custom Handelbars.js template file (*.hbs)
-  --outputFormat  Report format                                [default: \\"html\\"]
+  --outputFormat  Report format       [choices: \\"html\\", \\"pdf\\"] [default: \\"html\\"]
   --view          How should the data be represented. Defaults to a license
                   based view.                          [default: \\"org-licenses\\"]
 
