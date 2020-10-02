@@ -2,6 +2,7 @@ import * as path from 'path';
 import { generateHtmlReport } from '../../src/lib/generate-report';
 import { loadJson } from '../load-json';
 import { LicenseReportData } from '../../src/lib/generate-org-license-report';
+import { SupportedViews } from '../../src/lib/types';
 
 describe('Generate HTML report', () => {
   const OLD_ENV = process.env;
@@ -20,7 +21,7 @@ describe('Generate HTML report', () => {
       __dirname + '/fixtures/example-license-data.json',
     ) as unknown) as LicenseReportData;
     const orgData = {
-      name: "org",
+      name: 'org',
       id: 'avd-scv',
       slug: 'org',
       url: 'https://snyk.io/org/org',
@@ -28,8 +29,32 @@ describe('Generate HTML report', () => {
         name: 'group',
         id: 'group-1',
       },
-    }
+    };
     const htmlData = await generateHtmlReport(ORG_ID, licenseRes, orgData);
+    expect(htmlData).toMatchSnapshot();
+  }, 50000);
+
+  test('License HTML Report is generated as expected with project based view', async () => {
+    const licenseRes = (loadJson(
+      __dirname + '/fixtures/example-license-data.json',
+    ) as unknown) as LicenseReportData;
+    const orgData = {
+      name: 'org',
+      id: 'avd-scv',
+      slug: 'org',
+      url: 'https://snyk.io/org/org',
+      group: {
+        name: 'group',
+        id: 'group-1',
+      },
+    };
+    const htmlData = await generateHtmlReport(
+      ORG_ID,
+      licenseRes,
+      orgData,
+      undefined,
+      SupportedViews.PROJECT_DEPENDENCIES,
+    );
     expect(htmlData).toMatchSnapshot();
   }, 50000);
 
@@ -38,7 +63,7 @@ describe('Generate HTML report', () => {
       __dirname + '/fixtures/example-license-data.json',
     ) as unknown) as LicenseReportData;
     const orgData = {
-      name: "org",
+      name: 'org',
       id: 'avd-scv',
       slug: 'org',
       url: 'https://snyk.io/org/org',
@@ -46,8 +71,13 @@ describe('Generate HTML report', () => {
         name: 'group',
         id: 'group-1',
       },
-    }
-    const htmlData = await generateHtmlReport(ORG_ID, licenseRes, orgData,  path.resolve(__dirname + '/fixtures/custom-view.hbs'));
+    };
+    const htmlData = await generateHtmlReport(
+      ORG_ID,
+      licenseRes,
+      orgData,
+      path.resolve(__dirname + '/fixtures/custom-view.hbs'),
+    );
     expect(htmlData).toMatchSnapshot();
   }, 50000);
   test.todo('Test for when API fails aka bad org id provided');

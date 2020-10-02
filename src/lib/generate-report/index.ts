@@ -2,11 +2,11 @@ import * as Handlebars from 'handlebars';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as debugLib from 'debug';
+import * as _ from 'lodash';
 
 import { LicenseReportData } from '../generate-org-license-report';
 import { OrgData } from '../get-org-data';
-import { SupportedViews } from '../types';
-import _ = require('lodash');
+import { SupportedViews, LicenseReportDataEntry } from '../types';
 
 const debug = debugLib('snyk-licenses:generateHtmlReport');
 const DEFAULT_TEMPLATE = './templates/licenses-view.hbs';
@@ -50,29 +50,53 @@ function transformDataForLicenseView(
 }
 
 interface ProjectsReportData {
-  [projectId: string]: LicenseReportData;
+  [projectId: string]: {
+    projectName: string;
+    projectIndex: number;
+    licenses: {
+      [licenseId: string]: LicenseReportDataEntry;
+    };
+  };
 }
 
 function transformDataForDependencyView(
   orgPublicId: string,
   data: LicenseReportData,
   orgData: OrgData,
-  ): {
-    projects: ProjectsReportData;
-    orgPublicId: string;
-    orgData: OrgData;
-  } {
-
+): {
+  projects: ProjectsReportData;
+  orgPublicId: string;
+  orgData: OrgData;
+  totalProjects: number;
+} {
   const projectData: ProjectsReportData = {};
+  let totalProjects = 0;
 
-  for (const licenseId in Object.keys(data)) {
-    console.log('*** licenseId=', licenseId);
+  for (const licenseId of Object.keys(data)) {
     const licenseData = data[licenseId];
 
+    for (const project of licenseData.projects) {
+      if (!projectData[project.id]) {
+        totalProjects += 1;
+        projectData[project.id] = {
+          projectIndex: totalProjects,
+          projectName: project.name,
+          licenses: {
+            [licenseId]: licenseData,
+          },
+        };
+      } else {
+        projectData[project.id].licenses[licenseId] = licenseData;
+      }
+    }
   }
 
-
-  return { projects: projectData, orgPublicId, orgData };
+  return {
+    projects: projectData,
+    orgPublicId,
+    orgData,
+    totalProjects,
+  };
 }
 
 function selectTemplate(view: SupportedViews, templateOverride?): string {
