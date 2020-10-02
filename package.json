@@ -74,10 +74,5 @@
     "assets": [
       "src/**/templates/*.hbs"
     ]
-  },
-  "release": {
-    "branches": [
-      "master"
-    ]
   }
 }
