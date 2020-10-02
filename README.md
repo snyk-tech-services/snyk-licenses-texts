@@ -18,8 +18,6 @@ Ensure `SNYK_TOKEN` is set and has access to the Organization you want to genera
 - `generate` - generates an HTML report of licenses & dependencies data
 
 ### Supported Options
-
-
 Example usage:
 - See help:
   `snyk-licenses-report help`
@@ -41,7 +39,7 @@ Example usage:
   ```
   See the relevant TypeScript types in the repo for full information.
 
-## Development setup
+## Development setup
 - `npm i`
-- `npm run test`
+- `npm run test` (requires `TEST_ORG_ID` & `SNYK_TEST_TOKEN` from 1 password)
 - `DEBUG=snyk-license* node dist/index.js generate --orgPublicId=<ORG_PUBLIC_ID>`
