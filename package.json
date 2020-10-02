@@ -41,7 +41,7 @@
     "@snyk/configstore": "^3.2.0-rc1",
     "axios": "^0.19.2",
     "cheerio": "1.0.0-rc.3",
-    "debug": "4.1.1",
+    "debug": "4.2.0",
     "handlebars": "4.7.6",
     "lodash": "4.17.20",
     "node-fetch": "2.6.1",
