@@ -4,11 +4,10 @@ export interface Dependency {
   version: string;
   packageManager: string;
 }
-//TODO: finish the type
-export interface EnrichedDependency extends Dependency {}
+
+export type EnrichedDependency = Dependency & DependencyData;
 
 export interface LicenseReportDataEntry {
-  // TODO: what if it is a dual license?
   /**
    * The text of the license in HTML format
    */
@@ -133,6 +132,5 @@ export interface DependencyData {
 
 export const enum SupportedViews {
   ORG_LICENSES = 'org-licenses',
-  // TODO: support later
-  // PROJECT_DEPENDENCIES = 'project-dependencies',
+  PROJECT_DEPENDENCIES = 'project-dependencies',
 }

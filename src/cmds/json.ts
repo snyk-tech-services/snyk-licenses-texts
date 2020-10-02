@@ -12,13 +12,7 @@ export const builder = {
   orgPublicId: {
     required: true,
     default: undefined,
-  },
-  view: {
-    // TODO: add also dependency based view when ready
-    default: SupportedViews.ORG_LICENSES,
-    desc:
-      'How should the data be represented. Defaults to a license based view.',
-  },
+  }
 };
 export const aliases = ['j'];
 

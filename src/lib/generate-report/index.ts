@@ -5,16 +5,15 @@ import * as debugLib from 'debug';
 
 import { LicenseReportData } from '../generate-org-license-report';
 import { OrgData } from '../get-org-data';
-import { generateReportName } from '../generate-report-name';
 import { SupportedViews } from '../types';
+import _ = require('lodash');
 
 const debug = debugLib('snyk-licenses:generateHtmlReport');
 const DEFAULT_TEMPLATE = './templates/licenses-view.hbs';
 
 const transformDataFunc = {
   [SupportedViews.ORG_LICENSES]: transformDataForLicenseView,
-  // TODO: support later
-  // [SupportedViews.PROJECT_DEPENDENCIES]: transformDataForDependencyView,
+  [SupportedViews.PROJECT_DEPENDENCIES]: transformDataForDependencyView,
 };
 
 export async function generateHtmlReport(
@@ -50,18 +49,38 @@ function transformDataForLicenseView(
   return { licenses: data, orgPublicId, orgData };
 }
 
-// TODO: support later
-// function transformDataForDependencyView(data: LicenseReportData) {
-//   return data;
-// }
+interface ProjectsReportData {
+  [projectId: string]: LicenseReportData;
+}
+
+function transformDataForDependencyView(
+  orgPublicId: string,
+  data: LicenseReportData,
+  orgData: OrgData,
+  ): {
+    projects: ProjectsReportData;
+    orgPublicId: string;
+    orgData: OrgData;
+  } {
+
+  const projectData: ProjectsReportData = {};
+
+  for (const licenseId in Object.keys(data)) {
+    console.log('*** licenseId=', licenseId);
+    const licenseData = data[licenseId];
+
+  }
+
+
+  return { projects: projectData, orgPublicId, orgData };
+}
 
 function selectTemplate(view: SupportedViews, templateOverride?): string {
   switch (view) {
     case SupportedViews.ORG_LICENSES:
       return templateOverride || DEFAULT_TEMPLATE;
-    // TODO: support later
-    // case SupportedViews.PROJECT_DEPENDENCIES:
-    //   return  templateOverride || '../templates/project-dependencies-view.hbs';
+    case SupportedViews.PROJECT_DEPENDENCIES:
+      return templateOverride || './templates/project-dependencies-view.hbs';
     default:
       return DEFAULT_TEMPLATE;
   }
