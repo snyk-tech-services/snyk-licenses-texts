@@ -5,22 +5,21 @@ import {
   LicenseReportData,
   generateLicenseData,
 } from '../lib/generate-org-license-report';
-import {
-  generateHtmlReport,
-  generatePdfReport,
-  SupportedViews,
-} from '../lib/generate-output';
-import { writeContentsToFile } from '../lib/write-contents-to-file';
+import { generateHtmlReport } from '../lib/generate-report';
+import { getOrgData } from '../lib/get-org-data';
+import { generateReportName } from '../lib/generate-report-name';
+import { SupportedViews } from '../lib/types';
+import { saveHtmlReport, savePdfReport } from '../lib/generate-output';
 const debug = debugLib('snyk-licenses:generate');
 
 const outputHandlers = {
-  [OutputFormat.HTML]: generateHtmlReport,
-  // [OutputFormat.PDF]: generatePdfReport
+  [OutputFormat.HTML]: saveHtmlReport,
+  [OutputFormat.PDF]: savePdfReport,
 };
+
 const enum OutputFormat {
   HTML = 'html',
-  // TODO: support later
-  // PDF = 'pdf',
+  PDF = 'pdf',
 }
 
 export const desc =
@@ -39,8 +38,7 @@ export const builder = {
   outputFormat: {
     default: OutputFormat.HTML,
     desc: 'Report format',
-    // TODO: add also PDF when ready
-    options: [OutputFormat.HTML],
+    choices: [OutputFormat.HTML, OutputFormat.PDF],
   },
   view: {
     // TODO: add also dependency based view when ready
@@ -67,15 +65,23 @@ export async function handler(argv: {
     const licenseData: LicenseReportData = await generateLicenseData(
       orgPublicId,
     );
+    const orgData = await getOrgData(orgPublicId);
+    const reportData = await generateHtmlReport(
+      orgPublicId,
+      licenseData,
+      orgData,
+      template,
+      view,
+    );
     const generateReportFunc = outputHandlers[outputFormat];
-    const res = await generateReportFunc(orgPublicId, licenseData, template, view);
-    if (res) {
-      const outputFileName = `${orgPublicId}-${view}.html`;
-      const outputFile = pathLib.resolve(__dirname, outputFileName);
-      debug(`ℹ️ Saving generated report to ${outputFile}`);
-      writeContentsToFile(res, outputFile);
-      console.log('License report saved at ' + outputFile);
-    }
+    const reportFileName = `${generateReportName(
+      orgData,
+      view,
+    )}.${outputFormat}`;
+    await generateReportFunc(reportFileName, reportData);
+    console.log(
+      `${outputFormat.toUpperCase()} license report saved at: ${pathLib.resolve(__dirname, reportFileName)}`,
+    );
   } catch (e) {
     console.error(e);
   }

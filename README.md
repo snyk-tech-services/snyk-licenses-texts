@@ -17,11 +17,29 @@ Ensure `SNYK_TOKEN` is set and has access to the Organization you want to genera
 - `json` - generate the raw JSON licenses & dependencies data
 - `generate` - generates an HTML report of licenses & dependencies data
 
-Example usage:
-`snyk-licenses-report help`
-`snyk-licenses-report json --orgPublicId=<ORG_PUBLIC_ID>`
-`snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID>`
+### Supported Options
 
+
+Example usage:
+- See help:
+  `snyk-licenses-report help`
+- Get JSON output only:
+  `snyk-licenses-report json --orgPublicId=<ORG_PUBLIC_ID>`
+- Default HTML report (Licenses per Org view):
+  `snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID>`
+- PDF report (Licenses per Org view):
+  `snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID> --outputFormat=pdf`
+- Custom Handlebars.js template provided:
+  `snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID> --outputFormat=pdf --template="PATH/TO/TEMPLATE/template.hsb"`
+  The data in the template is available is in the format:
+  ```
+  {
+    licenses: LicenseReportData;
+    orgPublicId: string;
+    orgData: OrgData;
+  }
+  ```
+  See the relevant TypeScript types in the repo for full information.
 
 ## Development setup
 - `npm i`

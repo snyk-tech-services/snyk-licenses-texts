@@ -85,12 +85,12 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
     }
 
     .column {
-      flex: 1 0 300px;
+      flex: 1 0 150px;
       max-width: 100%;
     }
 
     .column-large {
-      flex: 1 0 500px;
+      flex: 1 0 300px;
       max-width: 100%;
     }
 
@@ -114,6 +114,10 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
 
     .u-padding--xl {
       padding: 2rem;
+    }
+
+    .overflow-auto {
+      overflow: auto;
     }
   </style>
 </head>
@@ -140,8 +144,8 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
   </header>
 
   <main class=\\"u-padding--xl\\">
-    <h1>Licenses Attribution Report</h1>
-    <h2>Org: <a href=\\"https://app.snyk.io/org/snyk-licences-test-org-do-not-modify\\">Snyk Licences Test Org - do not modify</a></h2>
+    <h1>Snyk Licenses Attribution Report</h1>
+    <h2>Org: <a href=\\"https://snyk.io/org/org\\">org</a></h2>
     <div class=\\"u-padding-top--sm\\">
       <h1 class=\\"license_title license_title--medium\\">
         <a href=\\"https://spdx.org/licenses/BSD-2-Clause.html\\">BSD-2-Clause</a>
@@ -167,8 +171,8 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
               <div class=\\"u-padding--sm dependency\\">
                 configstore@5.0.1
               </div>
-              <div class=\\"u-padding--sm\\">
-                <div class=\\"u-padding-top--sm\\">
+              <div class=\\"u-padding--sm overflow-auto\\">
+                <div class=\\"u-padding-top--sm overflow-auto\\">
                   Copyright (c) Google
                 </div>
               </div>
@@ -182,10 +186,10 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
           <strong>Projects in Snyk</strong>
         </div>
         <div class=\\"u-padding--sm\\">
-          <a class=\\"u-padding-top--sm\\" href=\\"https://app.snyk.io/org/snyk-licences-test-org-do-not-modify/project/XXXX\\">snyk-fixtures/npm-with-single-dep:package.json</a><br>
+          <a class=\\"u-padding-top--sm\\" href=\\"https://snyk.io/org/org/project/XXXX\\">snyk-fixtures/npm-with-single-dep:package.json</a><br>
         </div>
       </div>
-      <div class=\\"border-left\\">
+      <div class=\\"border-left overflow-auto\\">
         <div class=\\"border-bottom u-padding--sm\\">
           <strong>License Text</strong>
         </div>
@@ -357,7 +361,7 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
               <div class=\\"u-padding--sm dependency\\">
                 axis:axis-jaxrpc@1.4
               </div>
-              <div class=\\"u-padding--sm\\">
+              <div class=\\"u-padding--sm overflow-auto\\">
               </div>
             </div>
 
@@ -365,7 +369,7 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
               <div class=\\"u-padding--sm dependency\\">
                 axis:axis-saaj@1.4
               </div>
-              <div class=\\"u-padding--sm\\">
+              <div class=\\"u-padding--sm overflow-auto\\">
               </div>
             </div>
 
@@ -373,7 +377,7 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
               <div class=\\"u-padding--sm dependency\\">
                 axis:axis-wsdl4j@1.5.1
               </div>
-              <div class=\\"u-padding--sm\\">
+              <div class=\\"u-padding--sm overflow-auto\\">
               </div>
             </div>
 
@@ -385,10 +389,10 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
           <strong>Projects in Snyk</strong>
         </div>
         <div class=\\"u-padding--sm\\">
-          <a class=\\"u-padding-top--sm\\" href=\\"https://app.snyk.io/org/snyk-licences-test-org-do-not-modify/project/XXX\\">snyk-fixtures/tiny-monorepo:gradle/build.gradle</a><br>
+          <a class=\\"u-padding-top--sm\\" href=\\"https://snyk.io/org/org/project/XXX\\">snyk-fixtures/tiny-monorepo:gradle/build.gradle</a><br>
         </div>
       </div>
-      <div class=\\"border-left\\">
+      <div class=\\"border-left overflow-auto\\">
         <div class=\\"border-bottom u-padding--sm\\">
           <strong>License Text</strong>
         </div>
@@ -420,7 +424,7 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
               <div class=\\"u-padding--sm dependency\\">
                 tweetnacl@0.14.5
               </div>
-              <div class=\\"u-padding--sm\\">
+              <div class=\\"u-padding--sm overflow-auto\\">
               </div>
             </div>
 
@@ -432,10 +436,10 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
           <strong>Projects in Snyk</strong>
         </div>
         <div class=\\"u-padding--sm\\">
-          <a class=\\"u-padding-top--sm\\" href=\\"https://app.snyk.io/org/snyk-licences-test-org-do-not-modify/project/XXX\\">snyk-fixtures/npm-with-single-dep:package.json</a><br>
+          <a class=\\"u-padding-top--sm\\" href=\\"https://snyk.io/org/org/project/XXX\\">snyk-fixtures/npm-with-single-dep:package.json</a><br>
         </div>
       </div>
-      <div class=\\"border-left\\">
+      <div class=\\"border-left overflow-auto\\">
         <div class=\\"border-bottom u-padding--sm\\">
           <strong>License Text</strong>
         </div>
@@ -559,6 +563,177 @@ THE SOFTWARE IS PROVIDED \\"AS IS\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 </div>
       </div>
     </div>
+    </div>
+  </main>
+</body>
+
+</html>
+"
+`;
+
+exports[`Generate HTML report License HTML Report is generated as expected with a custom hbs template 1`] = `
+"<!DOCTYPE html>
+<html lang=\\"en\\">
+
+<head>
+  <meta http-equiv=\\"Content-type\\" content=\\"text/html; charset=utf-8\\">
+  <meta http-equiv=\\"Content-Language\\" content=\\"en-us\\">
+  <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1.0\\">
+  <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=edge\\">
+  <title>Snyk Licenses Report</title>
+  <link rel=\\"icon\\" type=\\"image/png\\" href=\\"https://res.cloudinary.com/snyk/image/upload/v1468845142/favicon/favicon.png\\"
+    sizes=\\"194x194\\">
+  <link rel=\\"shortcut icon\\" href=\\"https://res.cloudinary.com/snyk/image/upload/v1468845142/favicon/favicon.ico\\">
+  <style type=\\"text/css\\">
+    body {
+      margin: 0;
+      padding: 0;
+      font-weight: 400;
+    }
+
+    a {
+      color: #4b45a1;
+    }
+
+    h1,
+    h2 {
+      color: #393842;
+    }
+
+    .banner-logo {
+      padding-right: 2%;
+      margin-top: .85em;
+    }
+
+    .banner-container {
+      padding: 0 1.25rem;
+    }
+
+    .banner {
+      height: 4.0625rem;
+      padding: .75rem 0;
+    }
+
+    .banner {
+      background-color: #4b45a9;
+      padding: .625rem 0;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .border-bottom {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .border-top {
+      border-top: 1px solid #ccc;
+    }
+
+    .border-left {
+      border-left: 1px solid #ccc;
+    }
+
+    .border-right {
+      border-right: 1px solid #ccc;
+    }
+
+    .license_title {
+      border-left: .5rem solid #ccc;
+      padding: 4px;
+    }
+
+    .license_title--medium {
+      border-left-color: #df8620;
+    }
+
+    .license_title--high {
+      border-left-color: #b31a6b;
+    }
+
+    .display-flex {
+      display: flex;
+      max-width: 100%;
+    }
+
+    .column {
+      flex: 1 0 150px;
+      max-width: 100%;
+    }
+
+    .column-large {
+      flex: 1 0 300px;
+      max-width: 100%;
+    }
+
+    .dependency {
+      flex: 0 0 30%;
+      max-width: 100%;
+      word-break: break-all;
+    }
+
+    .u-padding-top--sm {
+      padding-top: .5rem;
+    }
+
+    .u-margin-top--sm {
+      margin-top: .5rem;
+    }
+
+    .u-padding--sm {
+      padding: .5rem;
+    }
+
+    .u-padding--xl {
+      padding: 2rem;
+    }
+
+    .overflow-auto {
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header id=\\"banner\\" class=\\"banner\\">
+    <div class=\\"banner-container\\">
+      <div class=\\"banner-logo\\">
+        <a class=\\"brand\\" href=\\"https://www.snyk.io\\" title=\\"Snyk\\">
+          <svg width=\\"68px\\" height=\\"35px\\" viewBox=\\"0 0 68 35\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\"
+            role=\\"img\\">
+            <title>Snyk - Open Source Security</title>
+            <g stroke=\\"none\\" stroke-width=\\"1\\" fill=\\"none\\" fill-rule=\\"evenodd\\">
+              <g fill=\\"#fff\\">
+                <path
+                  d=\\"M5.732,27.278 C3.445,27.278 1.589,26.885 0,26.124 L0.483,22.472 C2.163,23.296 4.056,23.689 5.643,23.689 C6.801,23.689 7.563,23.295 7.563,22.599 C7.563,20.594 0.333,21.076 0.333,15.839 C0.333,12.491 3.407,10.729 7.259,10.729 C9.179,10.729 11.161,11.249 12.444,11.704 L11.924,15.294 C10.577,14.774 8.747,14.291 7.222,14.291 C6.282,14.291 5.518,14.621 5.518,15.231 C5.518,17.208 12.903,16.815 12.903,21.925 C12.903,25.325 9.877,27.277 5.733,27.277 L5.732,27.278 Z M25.726,26.936 L25.726,17.894 C25.726,15.827 24.811,14.85 23.069,14.85 C22.219,14.85 21.329,15.09 20.719,15.46 L20.719,26.936 L15.352,26.936 L15.352,11.262 L20.602,10.83 L20.474,13.392 L20.652,13.392 C21.784,11.87 23.702,10.716 25.992,10.716 C28.736,10.716 31.112,12.416 31.112,16.436 L31.112,26.936 L25.724,26.936 L25.726,26.936 Z M61.175,26.936 L56.879,19.479 L56.446,19.479 L56.446,26.935 L51.082,26.935 L51.082,8.37 L56.447,0 L56.447,17.323 C57.515,16.017 61.112,11.059 61.112,11.059 L67.732,11.059 L61.454,17.689 L67.949,26.95 L61.175,26.95 L61.175,26.938 L61.175,26.936 Z M44.13,11.11 L41.93,18.262 C41.5,19.606 41.08,22.079 41.08,22.079 C41.08,22.079 40.75,19.516 40.292,18.172 L37.94,11.108 L31.928,11.108 L38.462,26.935 C37.572,29.04 36.199,30.815 34.369,30.815 C34.039,30.815 33.709,30.802 33.389,30.765 L31.255,34.061 C31.928,34.441 33.212,34.835 34.737,34.835 C38.703,34.835 41.359,31.627 43.215,26.885 L49.443,11.108 L44.132,11.108 L44.13,11.11 Z\\">
+                </path>
+              </g>
+            </g>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class=\\"u-padding--xl\\">
+    <h1>Custom Template Licenses Attribution Report</h1>
+    <h2>Org: <a href=\\"https://snyk.io/org/org\\">org</a></h2>
+    <div class=\\"u-padding-top--sm\\">
+      <h1 class=\\"license_title license_title--medium\\">
+        <a href=\\"https://spdx.org/licenses/BSD-2-Clause.html\\">BSD-2-Clause</a>
+      </h1>
+      <strong>Severity</strong>: medium
+    </div>
+    <div class=\\"u-padding-top--sm\\">
+      <h1 class=\\"license_title license_title--high\\">
+        <a href=\\"\\">Unknown</a>
+      </h1>
+      <strong>Severity</strong>: high
+    </div>
+    <div class=\\"u-padding-top--sm\\">
+      <h1 class=\\"license_title license_title--none\\">
+        <a href=\\"https://spdx.org/licenses/Unlicense.html\\">Unlicense</a>
+      </h1>
+      <strong>Severity</strong>: none
     </div>
   </main>
 </body>

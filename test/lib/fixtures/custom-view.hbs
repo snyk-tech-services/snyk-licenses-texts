@@ -10,7 +10,6 @@
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/snyk/image/upload/v1468845142/favicon/favicon.png"
     sizes="194x194">
   <link rel="shortcut icon" href="https://res.cloudinary.com/snyk/image/upload/v1468845142/favicon/favicon.ico">
-  {{!-- {{> inline-css }} --}}
   <style type="text/css">
     body {
       margin: 0;
@@ -83,12 +82,12 @@
     }
 
     .column {
-      flex: 1 0 300px;
+      flex: 1 0 150px;
       max-width: 100%;
     }
 
     .column-large {
-      flex: 1 0 500px;
+      flex: 1 0 300px;
       max-width: 100%;
     }
 
@@ -112,6 +111,10 @@
 
     .u-padding--xl {
       padding: 2rem;
+    }
+
+    .overflow-auto {
+      overflow: auto;
     }
   </style>
 </head>
@@ -139,7 +142,7 @@
   </header>
 
   <main class="u-padding--xl">
-    <h1>Licenses Attribution Report</h1>
+    <h1>Custom Template Licenses Attribution Report</h1>
     <h2>Org: <a href="{{orgData.url}}">{{orgData.name}}</a></h2>
     {{#each licenses}}
     <div class="u-padding-top--sm">
@@ -147,59 +150,6 @@
         <a href="{{licenseUrl}}">{{id}}</a>
       </h1>
       <strong>Severity</strong>: {{severity}}
-      {{#if instructions}}
-      <strong>Legal Instructions</strong>: {{instructions}}
-      {{/if}}
-    </div>
-
-    <div class="display-flex border-right border-top border-bottom border-left u-margin-top--sm">
-      <div class="column-large">
-        <div>
-          <div class="display-flex">
-            <div class="u-padding--sm dependency border-right">
-              <strong>Dependencies</strong>
-            </div>
-            <div class="u-padding--sm">
-              <strong>Copyrights</strong>
-            </div>
-          </div>
-
-          <div>
-            {{#each dependencies}}
-            <div class="display-flex border-top">
-              <div class="u-padding--sm dependency">
-                {{name}}@{{version}}
-              </div>
-              <div class="u-padding--sm">
-                {{#each copyright}}
-                <div class="u-padding-top--sm">
-                  {{this}}
-                </div>
-                {{/each}}
-              </div>
-            </div>
-
-            {{/each}}
-          </div>
-        </div>
-      </div>
-      <div class="column border-left">
-        <div class="border-bottom u-padding--sm">
-          <strong>Projects in Snyk</strong>
-        </div>
-        <div class="u-padding--sm">
-          {{#each projects}}
-          <a class="u-padding-top--sm" href="{{../../orgData.url}}/project/{{id}}">{{name}}</a><br>
-          {{/each}}
-        </div>
-      </div>
-      <div class="border-left">
-        <div class="border-bottom u-padding--sm">
-          <strong>License Text</strong>
-        </div>
-        <div class="u-padding--sm">{{{licenseText}}}</div>
-      </div>
-    </div>
     </div>
     {{/each}}
   </main>
