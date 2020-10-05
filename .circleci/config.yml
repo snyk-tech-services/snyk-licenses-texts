@@ -2,11 +2,16 @@ version: 2.1
 orbs:
     snyk: snyk/snyk@0.0.8
     puppeteer: threetreeslight/puppeteer@0.1.2
+    slack: circleci/slack@3.4.2
 jobs:
     build-test-monitor:
         docker:
             - image: circleci/node:latest
         steps:
+            - slack/notify:
+                channel: C0137E8F72A
+                color: '#42e2f4'
+                message: Starting snyk-licenses test
             - checkout
             - run: npm install semantic-release @semantic-release/exec pkg --save-dev
             - run: npm install
@@ -25,10 +30,17 @@ jobs:
                 monitor-on-build: true
                 token-variable: SNYK_TOKEN_PROD
             - run: npx semantic-release
+            - slack/status:
+                fail_only: false
+                only_for_branches: master
     build-test:
         docker:
             - image: circleci/node:latest
         steps:
+            - slack/notify:
+                channel: C0137E8F72A
+                color: '#42e2f4'
+                message: Starting snyk-licenses test
             - checkout
             - run: npm install
             - run:
@@ -40,12 +52,15 @@ jobs:
                     libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 \
                     libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates \
                     fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+            - run: npx tsc
             - run: npm test
             - snyk/scan:
                 fail-on-issues: true
                 monitor-on-build: false
                 token-variable: SNYK_TOKEN_PROD
-            - run: npx tsc
+            - slack/status:
+                fail_only: false
+                only_for_branches: master
     build-test-from-fork:
         docker:
             - image: circleci/node:latest
