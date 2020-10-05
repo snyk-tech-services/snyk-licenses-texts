@@ -30,7 +30,7 @@ export async function generateHtmlReport(
       hbsTemplate === DEFAULT_TEMPLATE ? 'default template' : hbsTemplate
     }`,
   );
-  debug(`✅ Registered Handlebars.js partials`);
+  debug(`ℹ️ Compiling Handlebars.js template ${hbsTemplate}`);
   const htmlTemplate = await compileTemplate(hbsTemplate);
   debug(`✅ Compiled template ${hbsTemplate}`);
   const transformedData = transformDataFunc[view](orgPublicId, data, orgData);

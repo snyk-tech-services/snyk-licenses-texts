@@ -73,7 +73,8 @@
       "dist/**/*.js"
     ],
     "assets": [
-      "src/**/templates/*.hbs"
+      "src/lib/**/**/*.hbs",
+      "src/lib/**/**/*.html"
     ]
   }
 }
