@@ -39,7 +39,7 @@
   "homepage": "https://github.com/snyk-tech-services/snyk-licenses-texts#readme",
   "dependencies": {
     "@snyk/configstore": "^3.2.0-rc1",
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "cheerio": "1.0.0-rc.3",
     "debug": "4.2.0",
     "handlebars": "4.7.6",
