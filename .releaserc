@@ -9,17 +9,17 @@
     {
       "//": "build the alpine binary",
       "path": "@semantic-release/exec",
-      "cmd": "npx nexe dist/index.js -t linux-x64-12.16.2"
+      "cmd": "npx nexe dist/index.js -t linux-x64-12.16.2 -o snyk-licenses-texts-linux"
     },
     {
       "//": "build the  macos binary",
       "path": "@semantic-release/exec",
-      "cmd": "npx nexe dist/index.js -t mac-x64-10.21.0"
+      "cmd": "npx nexe dist/index.js -t mac-x64-10.21.0 -o snyk-licenses-texts-macos"
     },
     {
       "//": "build the windows binary",
       "path": "@semantic-release/exec",
-      "cmd": "npx nexe dist/index.js -t windows-x64-10.16.0 "
+      "cmd": "npx nexe dist/index.js -t windows-x64-10.16.0 -o snyk-licenses-texts-win"
     },
     {
       "//": "shasum all binaries",
