@@ -13,7 +13,7 @@ jobs:
                 color: '#42e2f4'
                 message: Starting snyk-licenses test
             - checkout
-            - run: npm install semantic-release @semantic-release/exec pkg --save-dev
+            - run: npm install semantic-release @semantic-release/exec nexe --save-dev
             - run: npm install
             - run:
                 name: Install Headless Chrome dependencies
