@@ -7,9 +7,19 @@
       "cmd": "echo '' > dist/STANDALONE"
     },
     {
-      "//": "build the alpine, macos, linux and windows binaries",
+      "//": "build the alpine binary",
       "path": "@semantic-release/exec",
-      "cmd": "npx nexe . -t node12-linux-x64,node12-macos-x64,node12-win-x64"
+      "cmd": "npx nexe dist/index.js -t linux-x64-12.16.2"
+    },
+    {
+      "//": "build the  macos binary",
+      "path": "@semantic-release/exec",
+      "cmd": "npx nexe dist/index.js -t mac-x64-10.21.0"
+    },
+    {
+      "//": "build the windows binary",
+      "path": "@semantic-release/exec",
+      "cmd": "npx nexe dist/index.js -t windows-x64-10.16.0 "
     },
     {
       "//": "shasum all binaries",
