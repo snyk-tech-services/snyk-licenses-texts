@@ -1,10 +1,4 @@
 {
-  "plugins": [
-    "@semantic-release/exec",
-    {
-      "prepareCmd": "echo \"Preparing!\" && npm run build"
-    }
-  ],
   "prepare": [
     "@semantic-release/npm",
     {
@@ -12,25 +6,10 @@
       "path": "@semantic-release/exec",
       "cmd": "echo '' > dist/STANDALONE"
     },
-      {
-      "//": "build the code",
-      "path": "@semantic-release/exec",
-      "cmd": "npm run build"
-    },
     {
-      "//": "build the alpine binary",
+      "//": "build the alpine, macos, linux and windows binaries",
       "path": "@semantic-release/exec",
-      "cmd": "npx nexe dist/index.js -t linux-x64-12.16.2 -o snyk-licenses-texts-linux"
-    },
-    {
-      "//": "build the  macos binary",
-      "path": "@semantic-release/exec",
-      "cmd": "npx nexe dist/index.js -t mac-x64-10.21.0 -o snyk-licenses-texts-macos"
-    },
-    {
-      "//": "build the windows binary",
-      "path": "@semantic-release/exec",
-      "cmd": "npx nexe dist/index.js -t windows-x64-10.16.0 -o snyk-licenses-texts-win"
+      "cmd": "npx pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64"
     },
     {
       "//": "shasum all binaries",
