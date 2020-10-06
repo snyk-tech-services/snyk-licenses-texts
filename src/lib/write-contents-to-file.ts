@@ -28,7 +28,6 @@ export function writeContentsToFile(contents: string, outputFile: string) {
   }
 
   if (outputFile.constructor.name !== String.name) {
-    console.error('--json-output-file should be a filename path');
     return;
   }
 

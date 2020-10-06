@@ -90,7 +90,7 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
     }
 
     .column-large {
-      flex: 1 0 300px;
+      flex: 1 0 320px;
       max-width: 100%;
     }
 

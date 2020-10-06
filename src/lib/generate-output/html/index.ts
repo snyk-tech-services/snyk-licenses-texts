@@ -13,7 +13,7 @@ export async function saveHtmlReport(
   if (!data) {
     throw new Error('No report data to save!');
   }
-  const outputFile = pathLib.resolve(__dirname, fileName);
+  const outputFile = pathLib.resolve(process.cwd(), fileName);
   debug(`⏳  Saving generated report to ${outputFile}`);
   writeContentsToFile(data, outputFile);
   debug(`✅ Saved HTML report to ${outputFile}`);

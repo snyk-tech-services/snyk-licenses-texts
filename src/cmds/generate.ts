@@ -80,7 +80,7 @@ export async function handler(argv: {
     )}.${outputFormat}`;
     await generateReportFunc(reportFileName, reportData);
     console.log(
-      `${outputFormat.toUpperCase()} license report saved at: ${pathLib.resolve(__dirname, reportFileName)}`,
+      `${outputFormat.toUpperCase()} license report saved at: ${pathLib.resolve(process.cwd(), reportFileName)}`,
     );
   } catch (e) {
     console.error(e);

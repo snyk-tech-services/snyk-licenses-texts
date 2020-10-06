@@ -32,8 +32,7 @@
   },
   "files": [
     "bin",
-    "dist",
-    "src/lib/generate-output/html/templates"
+    "dist"
   ],
   "homepage": "https://github.com/snyk-tech-services/snyk-licenses-texts#readme",
   "dependencies": {
@@ -69,11 +68,16 @@
   },
   "pkg": {
     "scripts": [
-      "dist/**/*.js"
+      "dist/**/**/*.js",
+      "node_modules/puppeteer/lib/*.js"
+    ],
+    "targets": [
+      "node10"
     ],
     "assets": [
-      "src/lib/**/**/*.hbs",
-      "src/lib/**/**/*.html"
+      "dist/lib/**/**/*.hbs",
+      "dist/lib/**/**/*.html",
+      "dist/STANDALONE"
     ]
   }
 }
