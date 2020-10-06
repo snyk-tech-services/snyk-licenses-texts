@@ -1,10 +1,21 @@
 {
+  "plugins": [
+    "@semantic-release/exec",
+    {
+      "prepareCmd": "echo \"Preparing!\" && npm run build"
+    }
+  ],
   "prepare": [
     "@semantic-release/npm",
     {
       "//": "adds a file to identify a build as a standalone binary",
       "path": "@semantic-release/exec",
       "cmd": "echo '' > dist/STANDALONE"
+    },
+      {
+      "//": "build the code",
+      "path": "@semantic-release/exec",
+      "cmd": "npm run build"
     },
     {
       "//": "build the alpine binary",
@@ -70,5 +81,7 @@
       ]
     }
   ],
-  "branches": ["master"]
+  "branches": [
+    "master"
+  ]
 }
