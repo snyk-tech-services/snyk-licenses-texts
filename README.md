@@ -25,12 +25,10 @@ Example usage:
   `snyk-licenses-report json --orgPublicId=<ORG_PUBLIC_ID>`
 - Default HTML report (Licenses per Org view):
   `snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID>`
-- PDF report (Licenses per Org view):
-  `snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID> --outputFormat=pdf`
 - See more information on what is hapenning behind the scenes:
   `DEBUG=snyk-license* snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID>`
 - Custom Handlebars.js template provided:
-  `snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID> --outputFormat=pdf --template="PATH/TO/TEMPLATE/template.hsb"`
+  `snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID> --template="PATH/TO/TEMPLATE/template.hsb"`
   The data in the template is available is in the format:
   ```
   {
