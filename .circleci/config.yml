@@ -3,6 +3,32 @@ orbs:
     snyk: snyk/snyk@0.0.8
     puppeteer: threetreeslight/puppeteer@0.1.2
     slack: circleci/slack@3.4.2
+commands:
+  install_deps:
+    description: Install dependencies
+    steps:
+      - run:
+            name: Install dependencies
+            command: npm install
+      - run:
+            name: Install Headless Chrome dependencies
+            command: |
+                sudo apt-get install -yq \
+                gconf-service libasound2 libatk1.0-0 libatk-bridge2.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
+                libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 \
+                libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 \
+                libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates \
+                fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+  build_ts:
+    description: Build js files from ts
+    steps:
+      - run:
+          name: Build
+          command: npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist/
 jobs:
     build-test-monitor:
         docker:
@@ -13,17 +39,9 @@ jobs:
                 color: '#42e2f4'
                 message: Starting snyk-licenses build & monitor
             - checkout
-            - run: npm install semantic-release @semantic-release/exec nexe@next
-            - run: npm install
-            - run:
-                name: Install Headless Chrome dependencies
-                command: |
-                    sudo apt-get install -yq \
-                    gconf-service libasound2 libatk1.0-0 libatk-bridge2.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
-                    libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 \
-                    libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 \
-                    libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates \
-                    fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+            - run: npm install semantic-release @semantic-release/exec nexe@next --save-dev
+            - install_deps
+            - build_ts
             - run: npm test
             - snyk/scan:
                 fail-on-issues: true
@@ -42,17 +60,8 @@ jobs:
                 color: '#42e2f4'
                 message: Starting snyk-licenses test
             - checkout
-            - run: npm install
-            - run:
-                name: Install Headless Chrome dependencies
-                command: |
-                    sudo apt-get install -yq \
-                    gconf-service libasound2 libatk1.0-0 libatk-bridge2.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
-                    libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 \
-                    libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 \
-                    libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates \
-                    fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
-            - run: npx tsc
+            - install_deps
+            - build_ts
             - run: npm test
             - snyk/scan:
                 fail-on-issues: true
@@ -66,9 +75,8 @@ jobs:
             - image: circleci/node:12
         steps:
             - checkout
-            - run: npm install
+            - install_deps
             - run: npm test
-            - run: npx tsc
 workflows:
     version: 2
     nightly:
