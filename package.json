@@ -68,8 +68,7 @@
   },
   "pkg": {
     "scripts": [
-      "dist/**/**/*.js",
-      "node_modules/puppeteer/lib/*.js"
+      "dist/**/**/*.js"
     ],
     "targets": [
       "node10"
@@ -77,7 +76,9 @@
     "assets": [
       "dist/lib/**/**/*.hbs",
       "dist/lib/**/**/*.html",
-      "dist/STANDALONE"
+      "dist/build/*",
+      "dist/STANDALONE",
+      "node_modules/puppeteer/.local-chromium"
     ]
   }
 }
