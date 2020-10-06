@@ -39,7 +39,7 @@ jobs:
                 color: '#42e2f4'
                 message: Starting snyk-licenses build & monitor
             - checkout
-            - run: npm install semantic-release @semantic-release/exec nexe@next --save-dev
+            - run: npm install semantic-release @semantic-release/exec pkg --save-dev
             - install_deps
             - build_ts
             - run: npm test
