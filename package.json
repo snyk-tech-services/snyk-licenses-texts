@@ -75,10 +75,7 @@
     ],
     "assets": [
       "dist/lib/**/**/*.hbs",
-      "dist/lib/**/**/*.html",
-      "dist/build/*",
-      "dist/STANDALONE",
-      "node_modules/puppeteer/.local-chromium"
+      "dist/lib/**/**/*.html"
     ]
   }
 }
