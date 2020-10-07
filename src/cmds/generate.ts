@@ -38,7 +38,7 @@ export const builder = {
   outputFormat: {
     default: OutputFormat.HTML,
     desc: 'Report format',
-    choices: [OutputFormat.HTML, OutputFormat.PDF],
+    choices: [OutputFormat.HTML],
   },
   view: {
     choices: [SupportedViews.ORG_LICENSES, SupportedViews.PROJECT_DEPENDENCIES],

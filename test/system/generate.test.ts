@@ -29,7 +29,7 @@ describe('`snyk-licenses-report generate <...>`', () => {
     );
   }, 50000);
 
-  it('generated the report successfully as PDF', (done) => {
+  it.skip('generated the report successfully as PDF', (done) => {
     exec(
       `node ${main} generate --orgPublicId=${ORG_ID} --outputFormat=pdf`,
       { env: { SNYK_TOKEN: process.env.SNYK_TEST_TOKEN } },
@@ -42,7 +42,7 @@ describe('`snyk-licenses-report generate <...>`', () => {
   }, 50000);
   it('generated the report successfully with custom template', (done) => {
     exec(
-      `node ${main} generate --orgPublicId=${ORG_ID}  --template=${__dirname + '/fixtures/custom-view.hbs'}`,
+      `node ${main} generate --orgPublicId=${ORG_ID} --template=${__dirname + '/fixtures/custom-view.hbs'}`,
       { env: { SNYK_TOKEN: process.env.SNYK_TEST_TOKEN } },
       (err, stdout) => {
         expect(err).toBeNull();
