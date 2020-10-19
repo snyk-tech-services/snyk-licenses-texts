@@ -6,9 +6,10 @@ labels: "\U0001F41B  bug"
 assignees: ''
 ---
 
-- `node -v`:
-- `npm -v`:
-- `snyk-licenses-report --version`:
+Please provide all that are applicable:
+- Node version: `node -v`
+- NPM version: `npm -v`
+- Library version: `snyk-licenses-report --version`:
 - OS: (e.g. OSX, Linux, Windows, ...)
 - Command run: (e.g. `snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID>`, `snyk-licenses-report help`, ...)
 
