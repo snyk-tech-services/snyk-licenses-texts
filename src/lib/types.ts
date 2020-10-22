@@ -5,6 +5,7 @@ export interface Dependency {
   packageManager: string;
 }
 
+export type LicenseSeverity = 'none' | 'high' | 'medium' | 'low';
 export type EnrichedDependency = Dependency & DependencyData;
 
 export interface LicenseReportDataEntry {
@@ -24,7 +25,7 @@ export interface LicenseReportDataEntry {
   /**
    * Snyk license severity setup on the org license policy
    */
-  severity?: 'none' | 'high' | 'medium' | 'low';
+  severity?: LicenseSeverity;
   /**
    * Snyk license instruction setup on the org license policy
    */
@@ -129,8 +130,24 @@ export interface DependencyData {
 }
 [];
 
-
 export const enum SupportedViews {
   ORG_LICENSES = 'org-licenses',
   PROJECT_DEPENDENCIES = 'project-dependencies',
+}
+export interface GetLicenseDataOptions {
+  filters?: {
+    projects?: string[];
+    /**
+     * The list of dependency IDs to filter the results by
+     */
+    dependencies?: string[];
+    /**
+     * The list of license IDs to filter the results by
+     */
+    licenses?: string[];
+    /**
+     * The severities to filter the results by
+     */
+    severity?: LicenseSeverity[];
+  };
 }

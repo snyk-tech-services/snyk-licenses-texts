@@ -16,6 +16,8 @@ Options:
   --view          How should the data be represented. Defaults to a license
                   based view.
      [choices: \\"org-licenses\\", \\"project-dependencies\\"] [default: \\"org-licenses\\"]
+  --project       Project ID to filter the results by. E.g. --project=uuid
+                  --project=uuid2                                  [default: []]
 
 Missing required argument: orgPublicId"
 `;

@@ -1,5 +1,7 @@
 import * as debugLib from 'debug';
 import * as pathLib from 'path';
+import * as _ from 'lodash';
+
 import { getApiToken } from '../lib/get-api-token';
 import {
   LicenseReportData,
@@ -46,6 +48,10 @@ export const builder = {
     desc:
       'How should the data be represented. Defaults to a license based view.',
   },
+  project: {
+    default: [],
+    desc: 'Project ID to filter the results by. E.g. --project=uuid --project=uuid2',
+  },
 };
 export const aliases = ['g'];
 
@@ -54,16 +60,29 @@ export async function handler(argv: {
   outputFormat: OutputFormat;
   template: string;
   view: SupportedViews;
+  project?: string | string[];
 }) {
   try {
-    const { orgPublicId, outputFormat, template, view } = argv;
+    const { orgPublicId, outputFormat, template, view, project } = argv;
     debug(
       'ℹ️  Options: ' +
-        JSON.stringify({ orgPublicId, outputFormat, template, view }),
+        JSON.stringify({
+          orgPublicId,
+          outputFormat,
+          template,
+          view,
+          project: _.castArray(project),
+        }),
     );
     getApiToken();
+    const options = {
+      filters: {
+        projects: _.castArray(project),
+      },
+    };
     const licenseData: LicenseReportData = await generateLicenseData(
       orgPublicId,
+      options,
     );
     const orgData = await getOrgData(orgPublicId);
     const reportData = await generateHtmlReport(
@@ -80,7 +99,10 @@ export async function handler(argv: {
     )}.${outputFormat}`;
     await generateReportFunc(reportFileName, reportData);
     console.log(
-      `${outputFormat.toUpperCase()} license report saved at: ${pathLib.resolve(process.cwd(), reportFileName)}`,
+      `${outputFormat.toUpperCase()} license report saved at: ${pathLib.resolve(
+        __dirname,
+        reportFileName,
+      )}`,
     );
   } catch (e) {
     console.error(e);

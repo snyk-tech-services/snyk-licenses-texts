@@ -2,15 +2,9 @@ import 'source-map-support/register';
 import * as debugLib from 'debug';
 import * as snykApiSdk from 'snyk-api-ts-client';
 import { getApiToken } from '../../get-api-token';
-import { SortBy, Order } from './types';
+import { GetLicenseDataOptions } from '../../types';
 
 const debug = debugLib('snyk-licenses:getLicenseDataForOrg');
-
-interface GetLicenseDataOptions {
-  sortBy: SortBy;
-  order: Order;
-  filters?: snykApiSdk.OrgTypes.LicensesPostBodyType;
-}
 
 export async function getLicenseDataForOrg(
   orgPublicId: string,
@@ -18,13 +12,11 @@ export async function getLicenseDataForOrg(
 ): Promise<snykApiSdk.OrgTypes.LicensesPostResponseType> {
   getApiToken();
   const snykApiClient = await new snykApiSdk.Org({ orgId: orgPublicId });
-  const sortBy = options?.sortBy;
-  const order = options?.order;
   const body: snykApiSdk.OrgTypes.LicensesPostBodyType = {
-    ...options?.filters,
+    filters: options?.filters,
   };
   try {
-    const licenseData = await getAllLicensesData(snykApiClient, body, sortBy, order);
+    const licenseData = await getAllLicensesData(snykApiClient, body);
     return licenseData;
   } catch (e) {
     debug('❌ Failed to fetch licenses' + e);
@@ -35,15 +27,11 @@ export async function getLicenseDataForOrg(
 async function getAllLicensesData(
   snykApiClient,
   body,
-  sortBy,
-  order,
   page = 1,
 ): Promise<snykApiSdk.OrgTypes.LicensesPostResponseType> {
   const perPage = 200;
   const licensesData = await snykApiClient.licenses.post(
     body,
-    sortBy,
-    order,
     page,
     perPage,
   );
@@ -53,8 +41,6 @@ async function getAllLicensesData(
     const data = await getAllLicensesData(
       snykApiClient,
       body,
-      sortBy,
-      order,
       nextPage,
     );
     result.results.push(data.results);
