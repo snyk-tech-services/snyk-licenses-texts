@@ -50,7 +50,8 @@ export const builder = {
   },
   project: {
     default: [],
-    desc: 'Project ID to filter the results by. E.g. --project=uuid --project=uuid2',
+    desc:
+      'Project ID to filter the results by. E.g. --project=uuid --project=uuid2',
   },
 };
 export const aliases = ['g'];
@@ -97,12 +98,9 @@ export async function handler(argv: {
       orgData,
       view,
     )}.${outputFormat}`;
-    await generateReportFunc(reportFileName, reportData);
+    const { fileName } = await generateReportFunc(reportFileName, reportData);
     console.log(
-      `${outputFormat.toUpperCase()} license report saved at: ${pathLib.resolve(
-        __dirname,
-        reportFileName,
-      )}`,
+      `${outputFormat.toUpperCase()} license report saved at: ${fileName}`,
     );
   } catch (e) {
     console.error(e);

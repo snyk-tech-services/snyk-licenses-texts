@@ -9,7 +9,7 @@ const debug = debugLib('snyk-licenses:saveHtmlReport');
 export async function saveHtmlReport(
   fileName: string,
   data: string,
-): Promise<void> {
+): Promise<{ fileName: string }> {
   if (!data) {
     throw new Error('No report data to save!');
   }
@@ -17,4 +17,5 @@ export async function saveHtmlReport(
   debug(`⏳  Saving generated report to ${outputFile}`);
   writeContentsToFile(data, outputFile);
   debug(`✅ Saved HTML report to ${outputFile}`);
+  return { fileName: outputFile };
 }

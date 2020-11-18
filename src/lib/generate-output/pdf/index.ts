@@ -6,7 +6,7 @@ const debug = debugLib('snyk-licenses:generatePdfReport');
 export async function savePdfReport(
   fileName: string,
   data: string,
-): Promise<void> {
+): Promise<{ fileName: string }> {
   if (!data) {
     throw new Error('No report data to save!');
   }
@@ -19,4 +19,5 @@ export async function savePdfReport(
   await page.pdf({ path: fileName, format: 'A4' });
   await browser.close();
   debug(`✅ Saved PDF report to ${fileName}`);
+  return { fileName };
 }
