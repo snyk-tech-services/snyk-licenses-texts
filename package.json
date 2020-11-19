@@ -47,7 +47,7 @@
     "snyk-api-ts-client": "1.5.2",
     "snyk-config": "^3.0.0",
     "source-map-support": "^0.5.16",
-    "tslib": "2.0.2",
+    "tslib": "2.0.3",
     "yargs": "16.0.3"
   },
   "devDependencies": {
