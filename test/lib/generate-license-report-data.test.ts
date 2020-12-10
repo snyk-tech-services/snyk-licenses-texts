@@ -37,7 +37,7 @@ describe('Get org licenses', () => {
     expect(licenseRes['ISC'].dependencies[0].copyright).toEqual(
       ['Copyright (c) Isaac Z. Schlueter and Contributors'],
     );
-  }, 70000);
+  }, 80000);
 
   test('License data is generated as expected', async () => {
     const licenseRes = await generateLicenseData(ORG_ID, {
@@ -46,6 +46,7 @@ describe('Get org licenses', () => {
       },
     });
     expect(Object.keys(licenseRes).length >= 11).toBeTruthy();
+    console.log(`licenseRes`, licenseRes)
     expect(licenseRes['Unknown']).toBeUndefined();
     expect(licenseRes['Unlicense'].licenseText).not.toBeNull();
     expect(licenseRes['Unlicense'].licenseUrl).toBe(
@@ -65,7 +66,7 @@ describe('Get org licenses', () => {
     expect(licenseRes['ISC'].dependencies[0].copyright).toEqual([
       'Copyright (c) Isaac Z. Schlueter and Contributors',
     ]);
-  }, 70000);
+  }, 80000);
 
   test.todo('Test for when API fails aka bad org id provided');
 });

@@ -64,11 +64,20 @@ export async function generateLicenseData(
         license.dependencies = dependenciesEnriched;
       }
       const licenseData = await getLicenseTextAndUrl(license.id);
-      licenseReportData[license.id] = {
-        ...(license as any),
-        licenseText: licenseData?.licenseText,
-        licenseUrl: licenseData?.licenseUrl,
-      };
+      if (licenseReportData[license.id]) {
+        licenseReportData[license.id].dependencies = {
+          ...licenseReportData[license.id].dependencies,
+          ...(license as any).dependencies,
+        };
+        licenseReportData[license.id].severities.push(license.severity)
+      } else {
+        licenseReportData[license.id] = {
+          ...(license as any),
+          licenseText: licenseData?.licenseText,
+          licenseUrl: licenseData?.licenseUrl,
+          severities: [license.severity]
+        };
+      }
     }
     debug(`✅ Done processing ${licenseData.total} licenses`);
 
@@ -93,7 +102,9 @@ function enrichDependencies(
         ...dep[0],
       });
     } else {
-      debug('Dep information not available from /dependencies API response for ' + dependency.id);
+      enrichDependencies.push({
+        ...dependency,
+      });
     }
   }
 

@@ -6,7 +6,7 @@ export interface Dependency {
 }
 
 export type LicenseSeverity = 'none' | 'high' | 'medium' | 'low';
-export type EnrichedDependency = Dependency & DependencyData;
+export type EnrichedDependency = Dependency & Partial<DependencyData>;
 
 export interface LicenseReportDataEntry {
   /**
@@ -37,6 +37,7 @@ export interface LicenseReportDataEntry {
   /**
    * Snyk projects from this org with dependencies using this license
    */
+  severities: string[];
   projects: {
     id: string;
     name: string;
