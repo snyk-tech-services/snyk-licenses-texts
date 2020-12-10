@@ -146,10 +146,13 @@
     <h2>Organization: <a href="{{orgData.url}}">{{orgData.name}}</a></h2>
     {{#each licenses}}
     <div class="u-padding-top--sm">
-      <h1 class="license_title license_title--{{severity}}">
+      <h1>
         <a href="{{licenseUrl}}">{{id}}</a>
       </h1>
-      <strong>Severity</strong>: {{severity}}
+      <strong>Severities</strong>:
+      {{#each severities}}
+      "{{ this }}",
+      {{/each}}
       {{#if instructions}}
       <strong>Legal Instructions</strong>: {{instructions}}
       {{/if}}

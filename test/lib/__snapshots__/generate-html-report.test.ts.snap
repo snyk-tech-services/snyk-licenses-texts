@@ -147,10 +147,10 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
     <h1>Snyk Licenses Attribution Report</h1>
     <h2>Organization: <a href=\\"https://snyk.io/org/org\\">org</a></h2>
     <div class=\\"u-padding-top--sm\\">
-      <h1 class=\\"license_title license_title--medium\\">
+      <h1>
         <a href=\\"https://spdx.org/licenses/BSD-2-Clause.html\\">BSD-2-Clause</a>
       </h1>
-      <strong>Severity</strong>: medium
+      <strong>Severities</strong>:
       <strong>Legal Instructions</strong>: Do not use any package with this license without speaking to anna@legal.com
     </div>
 
@@ -337,10 +337,10 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
     </div>
     </div>
     <div class=\\"u-padding-top--sm\\">
-      <h1 class=\\"license_title license_title--high\\">
+      <h1>
         <a href=\\"\\">Unknown</a>
       </h1>
-      <strong>Severity</strong>: high
+      <strong>Severities</strong>:
       <strong>Legal Instructions</strong>: Any package with this license is not to be used.
     </div>
 
@@ -401,10 +401,10 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
     </div>
     </div>
     <div class=\\"u-padding-top--sm\\">
-      <h1 class=\\"license_title license_title--none\\">
+      <h1>
         <a href=\\"https://spdx.org/licenses/Unlicense.html\\">Unlicense</a>
       </h1>
-      <strong>Severity</strong>: none
+      <strong>Severities</strong>:
     </div>
 
     <div class=\\"display-flex border-right border-top border-bottom border-left u-margin-top--sm\\">
