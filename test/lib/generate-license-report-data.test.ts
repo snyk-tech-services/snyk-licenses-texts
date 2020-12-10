@@ -46,7 +46,6 @@ describe('Get org licenses', () => {
       },
     });
     expect(Object.keys(licenseRes).length >= 11).toBeTruthy();
-    console.log(`licenseRes`, licenseRes)
     expect(licenseRes['Unknown']).toBeUndefined();
     expect(licenseRes['Unlicense'].licenseText).not.toBeNull();
     expect(licenseRes['Unlicense'].licenseUrl).toBe(
