@@ -35,10 +35,11 @@ async function getAllDependenciesData(
   requestManager,
   orgPublicId,
   body,
-  page = 0,
+  page = 1,
 ): Promise<snykApiSdk.OrgTypes.DependenciesPostResponseType> {
   const dependenciesData = {
     results: [],
+    total: undefined,
   };
   const perPage = 20; // this is a max on that endpoint
 
@@ -60,6 +61,7 @@ async function getAllDependenciesData(
         currentPage}/${total} received so far`,
     );
     dependenciesData.results.push(...results);
+    dependenciesData.total = total;
     hasMorePages = hasNextPage;
   }
 

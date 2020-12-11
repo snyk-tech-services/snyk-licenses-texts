@@ -4,6 +4,7 @@ import * as snykApiSdk from 'snyk-api-ts-client';
 import { getApiToken } from '../../get-api-token';
 import { requestsManager } from 'snyk-request-manager';
 import { GetLicenseDataOptions } from '../../types';
+import { number } from 'yargs';
 
 const debug = debugLib('snyk-licenses:getLicenseDataForOrg');
 
@@ -20,7 +21,11 @@ export async function getLicenseDataForOrg(
     filters: options?.filters,
   };
   try {
-    const licenseData = await getAllLicensesData(requestManager, body, orgPublicId);
+    const licenseData = await getAllLicensesData(
+      requestManager,
+      orgPublicId,
+      body,
+    );
     return licenseData;
   } catch (e) {
     debug('❌ Failed to fetch licenses' + e);
@@ -29,22 +34,23 @@ export async function getLicenseDataForOrg(
 }
 
 async function getAllLicensesData(
-  requestManager,
-  orgPublicId,
-  body,
-  page = 0,
+  requestManager: requestsManager,
+  orgPublicId: string,
+  body: snykApiSdk.OrgTypes.LicensesPostBodyType,
+  page = 1,
 ): Promise<snykApiSdk.OrgTypes.LicensesPostResponseType> {
   const dependenciesData = {
     results: [],
+    total: undefined,
   };
-  const perPage = 20; // this is a max on that endpoint
+  const perPage = 100;
 
   let currentPage = page;
   let hasMorePages = true;
 
   while (hasMorePages) {
     currentPage = currentPage + 1;
-    debug(`Fetching dependencies data for page ${currentPage}`);
+    debug(`Fetching licenses data for page ${currentPage}`);
     const { hasNextPage, results, total } = await getLicensesForPage(
       requestManager,
       orgPublicId,
@@ -57,6 +63,7 @@ async function getAllLicensesData(
         currentPage}/${total} received so far`,
     );
     dependenciesData.results.push(...results);
+    dependenciesData.total = total;
     hasMorePages = hasNextPage;
   }
 
@@ -69,11 +76,11 @@ interface DependenciesResponse
 }
 
 async function getLicensesForPage(
-  requestManager,
-  orgPublicId,
-  body,
-  page,
-  perPage,
+  requestManager: requestsManager,
+  orgPublicId: string,
+  body: snykApiSdk.OrgTypes.LicensesPostBodyType,
+  page: number,
+  perPage: number,
 ): Promise<DependenciesResponse> {
   const res = await requestManager.request({
     verb: 'post',
