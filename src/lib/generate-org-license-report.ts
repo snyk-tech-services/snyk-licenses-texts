@@ -85,12 +85,11 @@ export async function generateLicenseData(
   }
 }
 
-function enrichDependencies(
+export function enrichDependencies(
   dependencies: Dependency[],
   dependenciesData,
 ): EnrichedDependency[] {
   const enrichDependencies: EnrichedDependency[] = [];
-
   for (const dependency of dependencies) {
     const dep: DependencyData[] = dependenciesData[dependency.id];
     if (dep && dep[0]) {
