@@ -48,14 +48,11 @@ export async function generateLicenseData(
     }
     debug(`⏳ Processing ${licenseData.total} licenses`);
 
-    const dependenciesAll = [];
-
     for (const license of licenseData.results) {
       const dependencies = license.dependencies;
       if (!dependencies.length) {
         continue;
       }
-      dependenciesAll.push(...dependencies);
       const dependenciesEnriched = enrichDependencies(
         dependencies,
         dependenciesData,
@@ -65,10 +62,10 @@ export async function generateLicenseData(
       }
       const licenseData = await getLicenseTextAndUrl(license.id);
       if (licenseReportData[license.id]) {
-        licenseReportData[license.id].dependencies = {
+        licenseReportData[license.id].dependencies = [
           ...licenseReportData[license.id].dependencies,
           ...(license as any).dependencies,
-        };
+        ];
         licenseReportData[license.id].severities.push(license.severity)
       } else {
         licenseReportData[license.id] = {
