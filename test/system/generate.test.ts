@@ -22,6 +22,24 @@ describe('`snyk-licenses-report generate <...>`', () => {
     );
   });
 
+  it('Shows error when invalid --orgPublicId', async (done) => {
+    exec(
+      `node ${main} generate --orgPublicId=my-org`,
+      {
+        env: {
+          PATH: process.env.PATH,
+          SNYK_TOKEN: process.env.SNYK_TEST_TOKEN,
+        },
+      },
+      (err, stdout, stderr) => {
+        expect(stdout).toBe('');
+        expect(err).toBeNull();
+        expect(stderr.trim()).toMatchSnapshot();
+        done();
+      },
+    );
+  });
+
   it('generated the report successfully with default params', (done) => {
     exec(
       `node ${main} generate --orgPublicId=${ORG_ID}`,
@@ -37,7 +55,7 @@ describe('`snyk-licenses-report generate <...>`', () => {
         done();
       },
     );
-  }, 50000);
+  }, 80000);
 
   it.skip('generated the report successfully as PDF', (done) => {
     exec(
@@ -54,7 +72,7 @@ describe('`snyk-licenses-report generate <...>`', () => {
         done();
       },
     );
-  }, 50000);
+  }, 80000);
   it('generated the report successfully with custom template', (done) => {
     exec(
       `node ${main} generate --orgPublicId=${ORG_ID} --template=${__dirname +
@@ -71,7 +89,7 @@ describe('`snyk-licenses-report generate <...>`', () => {
         done();
       },
     );
-  }, 50000);
+  }, 80000);
   it.todo('API is down');
   it.todo('Requested org has no licenses policy');
 });

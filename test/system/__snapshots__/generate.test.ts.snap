@@ -1,5 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`\`snyk-licenses-report generate <...>\` Shows error when invalid --orgPublicId 1`] = `
+"No organization data found for provided ID: my-org.
+Please check that the --orgPublicId is the correct public ID found in Organization Settings page on https://app.snyk.io/org/<ORG_NAME>/manage/settings"
+`;
+
 exports[`\`snyk-licenses-report generate <...>\` Shows error when missing --orgPublicId 1`] = `
 "Command failed: node ./dist/index.js generate
 index.js generate
