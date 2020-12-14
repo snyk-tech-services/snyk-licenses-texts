@@ -34,12 +34,14 @@ describe('Get org licenses', () => {
 
     expect(licenseRes['Zlib'].projects.length).toEqual(2);
     expect(licenseRes['ISC'].projects.length).toEqual(3);
-    expect(licenseRes['ISC'].dependencies[0].copyright).toEqual(
-      ['Copyright (c) Isaac Z. Schlueter and Contributors'],
-    );
+    expect(
+      licenseRes['ISC'].dependencies.filter(
+        (dep) => dep.id === 'color-support@1.1.3',
+      )[0].copyright,
+    ).toEqual(['Copyright (c) Isaac Z. Schlueter and Contributors']);
   }, 80000);
 
-  test('License data is generated as expected', async () => {
+  test.only('License data is generated as expected', async () => {
     const licenseRes = await generateLicenseData(ORG_ID, {
       filters: {
         projects: [PROJECT_ID],
@@ -62,9 +64,11 @@ describe('Get org licenses', () => {
 
     expect(licenseRes['Zlib']).toBeUndefined();
     expect(licenseRes['ISC'].projects.length).toEqual(1);
-    expect(licenseRes['ISC'].dependencies[0].copyright).toEqual([
-      'Copyright (c) Isaac Z. Schlueter and Contributors',
-    ]);
+    expect(
+      licenseRes['ISC'].dependencies.filter(
+        (dep) => dep.id === 'color-support@1.1.3',
+      )[0].copyright,
+    ).toEqual(['Copyright (c) Isaac Z. Schlueter and Contributors']);
   }, 80000);
 
   test.todo('Test for when API fails aka bad org id provided');
