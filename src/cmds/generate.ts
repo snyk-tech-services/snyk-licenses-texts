@@ -76,6 +76,7 @@ export async function handler(argv: {
         }),
     );
     getApiToken();
+    const orgData = await getOrgData(orgPublicId);
     const options = {
       filters: {
         projects: _.castArray(project),
@@ -85,7 +86,6 @@ export async function handler(argv: {
       orgPublicId,
       options,
     );
-    const orgData = await getOrgData(orgPublicId);
     const reportData = await generateHtmlReport(
       orgPublicId,
       licenseData,
@@ -103,6 +103,6 @@ export async function handler(argv: {
       `${outputFormat.toUpperCase()} license report saved at: ${fileName}`,
     );
   } catch (e) {
-    console.error(e);
+    console.error(e.message || e);
   }
 }
