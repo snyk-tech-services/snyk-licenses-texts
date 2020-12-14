@@ -34,6 +34,10 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
       margin-top: .85em;
     }
 
+    .license-text {
+      white-space: pre-line;
+    }
+
     .banner-container {
       padding: 0 1.25rem;
     }
@@ -145,13 +149,10 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
 
   <main class=\\"u-padding--xl\\">
     <h1>Snyk Licenses Attribution Report</h1>
-    <h2>Organization: <a href=\\"https://snyk.io/org/org\\">org</a></h2>
     <div class=\\"u-padding-top--sm\\">
       <h1>
         <a href=\\"https://spdx.org/licenses/BSD-2-Clause.html\\">BSD-2-Clause</a>
       </h1>
-      <strong>Severities</strong>:
-      <strong>Legal Instructions</strong>: Do not use any package with this license without speaking to anna@legal.com
     </div>
 
     <div class=\\"display-flex border-right border-top border-bottom border-left u-margin-top--sm\\">
@@ -181,19 +182,11 @@ exports[`Generate HTML report License HTML Report is generated as expected 1`] =
           </div>
         </div>
       </div>
-      <div class=\\"column border-left\\">
-        <div class=\\"border-bottom u-padding--sm\\">
-          <strong>Projects in Snyk</strong>
-        </div>
-        <div class=\\"u-padding--sm\\">
-          <a class=\\"u-padding-top--sm\\" href=\\"https://snyk.io/org/org/project/XXXX\\">snyk-fixtures/npm-with-single-dep:package.json</a><br>
-        </div>
-      </div>
       <div class=\\"border-left overflow-auto\\">
         <div class=\\"border-bottom u-padding--sm\\">
           <strong>License Text</strong>
         </div>
-        <div class=\\"u-padding--sm\\">
+        <div class=\\"u-padding--sm license-text\\">
 
   
     
@@ -340,8 +333,6 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
       <h1>
         <a href=\\"\\">Unknown</a>
       </h1>
-      <strong>Severities</strong>:
-      <strong>Legal Instructions</strong>: Any package with this license is not to be used.
     </div>
 
     <div class=\\"display-flex border-right border-top border-bottom border-left u-margin-top--sm\\">
@@ -384,19 +375,11 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
           </div>
         </div>
       </div>
-      <div class=\\"column border-left\\">
-        <div class=\\"border-bottom u-padding--sm\\">
-          <strong>Projects in Snyk</strong>
-        </div>
-        <div class=\\"u-padding--sm\\">
-          <a class=\\"u-padding-top--sm\\" href=\\"https://snyk.io/org/org/project/XXX\\">snyk-fixtures/tiny-monorepo:gradle/build.gradle</a><br>
-        </div>
-      </div>
       <div class=\\"border-left overflow-auto\\">
         <div class=\\"border-bottom u-padding--sm\\">
           <strong>License Text</strong>
         </div>
-        <div class=\\"u-padding--sm\\"></div>
+        <div class=\\"u-padding--sm license-text\\"></div>
       </div>
     </div>
     </div>
@@ -404,7 +387,6 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
       <h1>
         <a href=\\"https://spdx.org/licenses/Unlicense.html\\">Unlicense</a>
       </h1>
-      <strong>Severities</strong>:
     </div>
 
     <div class=\\"display-flex border-right border-top border-bottom border-left u-margin-top--sm\\">
@@ -431,19 +413,11 @@ THIS SOFTWARE IS PROVIDED BY <<var;name=\\"copyrightHolderAsIs\\";original=\\"TH
           </div>
         </div>
       </div>
-      <div class=\\"column border-left\\">
-        <div class=\\"border-bottom u-padding--sm\\">
-          <strong>Projects in Snyk</strong>
-        </div>
-        <div class=\\"u-padding--sm\\">
-          <a class=\\"u-padding-top--sm\\" href=\\"https://snyk.io/org/org/project/XXX\\">snyk-fixtures/npm-with-single-dep:package.json</a><br>
-        </div>
-      </div>
       <div class=\\"border-left overflow-auto\\">
         <div class=\\"border-bottom u-padding--sm\\">
           <strong>License Text</strong>
         </div>
-        <div class=\\"u-padding--sm\\">
+        <div class=\\"u-padding--sm license-text\\">
 
   
     

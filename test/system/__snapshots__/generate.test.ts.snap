@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`\`snyk-licenses-report generate <...>\` Shows error when --excludeSnykFields is used with project-dependencies view 1`] = `"--excludeSnykFields is not supported with with project-dependencies view as Snyk project information is required"`;
+
 exports[`\`snyk-licenses-report generate <...>\` Shows error when invalid --orgPublicId 1`] = `
 "No organization data found for provided ID: my-org.
 Please check that the --orgPublicId is the correct public ID found in Organization Settings page on https://app.snyk.io/org/<ORG_NAME>/manage/settings"
@@ -12,17 +14,20 @@ index.js generate
 Generate org licenses & dependencies report in HTML format
 
 Options:
-  --version       Show version number                                  [boolean]
-  --help          Show help                                            [boolean]
-  --orgPublicId   Public id of the organization in Snyk (available on
-                  organization settings)                              [required]
-  --template      Path to custom Handelbars.js template file (*.hbs)
-  --outputFormat  Report format              [choices: \\"html\\"] [default: \\"html\\"]
-  --view          How should the data be represented. Defaults to a license
-                  based view.
+  --version            Show version number                             [boolean]
+  --help               Show help                                       [boolean]
+  --orgPublicId        Public id of the organization in Snyk (available on
+                       organization settings)                         [required]
+  --template           Path to custom Handelbars.js template file (*.hbs)
+  --outputFormat       Report format         [choices: \\"html\\"] [default: \\"html\\"]
+  --excludeSnykFields  Choose to exclude Snyk information. Excluded information:
+                       organization name, organization links, license severities
+                       in Snyk, license instructions, Snyk project information.
+  --view               How should the data be represented. Defaults to a license
+                       based view.
      [choices: \\"org-licenses\\", \\"project-dependencies\\"] [default: \\"org-licenses\\"]
-  --project       Project ID to filter the results by. E.g. --project=uuid
-                  --project=uuid2                                  [default: []]
+  --project            Project ID to filter the results by. E.g. --project=uuid
+                       --project=uuid2                             [default: []]
 
 Missing required argument: orgPublicId"
 `;
