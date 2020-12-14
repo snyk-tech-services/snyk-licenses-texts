@@ -15,7 +15,7 @@ describe('Get org licenses', () => {
   test('License results are returned from API', async () => {
     const licenseRes = await getDependenciesDataForOrg(ORG_ID);
     expect(licenseRes.results.length > 0).toBeTruthy();
-  }, 50000);
+  }, 80000);
 
   test.todo('Test for when API fails aka bad org id provided');
 });

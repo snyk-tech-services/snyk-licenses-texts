@@ -3,6 +3,7 @@ import * as debugLib from 'debug';
 import * as snykApiSdk from 'snyk-api-ts-client';
 import { getApiToken } from '../../get-api-token';
 import { GetLicenseDataOptions } from '../../types';
+import { requestsManager } from 'snyk-request-manager';
 
 const debug = debugLib('snyk-licenses:getDependenciesDataForOrg');
 
@@ -11,13 +12,16 @@ export async function getDependenciesDataForOrg(
   options?: GetLicenseDataOptions,
 ): Promise<snykApiSdk.OrgTypes.DependenciesPostResponseType> {
   getApiToken();
-  const snykApiClient = await new snykApiSdk.Org({ orgId: orgPublicId });
+  const requestManager = new requestsManager({
+    userAgentPrefix: 'snyk-licenses-attribution',
+  });
   const body: snykApiSdk.OrgTypes.DependenciesPostBodyType = {
     filters: options?.filters,
   };
   try {
     const dependenciesData = await getAllDependenciesData(
-      snykApiClient,
+      requestManager,
+      orgPublicId,
       body,
     );
     return dependenciesData;
@@ -28,26 +32,69 @@ export async function getDependenciesDataForOrg(
 }
 
 async function getAllDependenciesData(
-  snykApiClient,
+  requestManager,
+  orgPublicId,
   body,
   page = 1,
 ): Promise<snykApiSdk.OrgTypes.DependenciesPostResponseType> {
-  const perPage = 200;
-  const dependenciesData = await snykApiClient.dependencies.post(
-    body,
-    page,
-    perPage,
-  );
-  const result = dependenciesData;
-  if (result.results.length && result.results.length * page < result.total) {
-    const nextPage = page + 1;
-    const data = await getAllDependenciesData(
-      snykApiClient,
+  const dependenciesData = {
+    results: [],
+    total: undefined,
+  };
+  const perPage = 20; // this is a max on that endpoint
+
+  let currentPage = page;
+  let hasMorePages = true;
+
+  while (hasMorePages) {
+    currentPage = currentPage + 1;
+    debug(`Fetching dependencies data for page ${currentPage}`);
+    const { hasNextPage, results, total } = await getDependenciesForPage(
+      requestManager,
+      orgPublicId,
       body,
-      nextPage,
+      currentPage,
+      perPage,
     );
-    result.results = [...result.results, ...data.results];
+    debug(
+      `Received ${perPage} items, overall ${results.length *
+        currentPage}/${total} received so far`,
+    );
+    dependenciesData.results.push(...results);
+    dependenciesData.total = total;
+    hasMorePages = hasNextPage;
   }
 
-  return result;
+  return dependenciesData;
+}
+
+interface DependenciesResponse
+  extends snykApiSdk.OrgTypes.DependenciesPostResponseType {
+  hasNextPage: boolean;
+}
+
+async function getDependenciesForPage(
+  requestManager,
+  orgPublicId,
+  body,
+  page,
+  perPage,
+): Promise<DependenciesResponse> {
+  const res = await requestManager.request({
+    verb: 'post',
+    url: `/org/${orgPublicId}/dependencies?sortBy=dependency&order=asc&page=${page}&perPage=${perPage}`,
+    body: JSON.stringify(body),
+  });
+  const result = res.data;
+  let hasNextPage = false;
+
+  if (
+    result?.results &&
+    result?.results?.length > 0 &&
+    result?.results?.length * page < result.total
+  ) {
+    hasNextPage = true;
+  }
+
+  return { ...result, hasNextPage };
 }
