@@ -22,6 +22,11 @@ export async function generateHtmlReport(
   orgData: OrgData,
   templateOverridePath: string | undefined = undefined,
   view: SupportedViews = SupportedViews.ORG_LICENSES,
+  options: {
+    excludeSnykFields: boolean;
+  } = {
+    excludeSnykFields: false,
+  },
 ): Promise<string> {
   debug('ℹ️  Generating HTML report');
   const hbsTemplate = selectTemplate(view, templateOverridePath);
@@ -30,10 +35,15 @@ export async function generateHtmlReport(
       hbsTemplate === DEFAULT_TEMPLATE ? 'default template' : hbsTemplate
     }`,
   );
-  debug(`ℹ️ Compiling Handlebars.js template ${hbsTemplate}`);
+  debug(`ℹ️  Compiling Handlebars.js template ${hbsTemplate}`);
   const htmlTemplate = await compileTemplate(hbsTemplate);
   debug(`✅ Compiled template ${hbsTemplate}`);
-  const transformedData = transformDataFunc[view](orgPublicId, data, orgData);
+  const transformedData = transformDataFunc[view](
+    orgPublicId,
+    data,
+    orgData,
+    options,
+  );
   return htmlTemplate(transformedData);
 }
 
@@ -41,12 +51,23 @@ function transformDataForLicenseView(
   orgPublicId: string,
   data: LicenseReportData,
   orgData: OrgData,
+  options: {
+    excludeSnykFields: boolean;
+  } = {
+    excludeSnykFields: false,
+  },
 ): {
   licenses: LicenseReportData;
   orgPublicId: string;
   orgData: OrgData;
+  includeSnykFields: boolean;
 } {
-  return { licenses: data, orgPublicId, orgData };
+  return {
+    licenses: data,
+    orgPublicId,
+    orgData,
+    includeSnykFields: !options.excludeSnykFields,
+  };
 }
 
 interface ProjectsReportData {

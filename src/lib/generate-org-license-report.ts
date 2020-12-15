@@ -34,6 +34,10 @@ export async function generateLicenseData(
 
   try {
     const licenseData = await getLicenseDataForOrg(orgPublicId, options);
+    if (!licenseData.total) {
+      debug(`ℹ️  Detected 0 licenses`);
+      throw new Error("No licenses returned from /licenses Snyk API. Please make sure the org has licenses configured and try again.");
+    }
     debug(`✅ Got license API data for Org:${orgPublicId}`);
     const dependenciesDataRaw = await getDependenciesDataForOrg(
       orgPublicId,

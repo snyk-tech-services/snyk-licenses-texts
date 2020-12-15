@@ -98,6 +98,9 @@ export async function handler(argv: GenerateOptions) {
       orgData,
       template,
       view,
+      {
+        excludeSnykFields,
+      },
     );
     const generateReportFunc = outputHandlers[outputFormat];
     const reportFileName = `${generateReportName(

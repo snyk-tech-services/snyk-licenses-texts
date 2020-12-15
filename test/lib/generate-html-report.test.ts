@@ -80,5 +80,31 @@ describe('Generate HTML report', () => {
     );
     expect(htmlData).toMatchSnapshot();
   }, 80000);
+  test('License HTML Report is generated as expected with excludeSnykFields enabled', async () => {
+    const licenseRes = (loadJson(
+      __dirname + '/fixtures/example-license-data.json',
+    ) as unknown) as LicenseReportData;
+    const orgData = {
+      name: 'org',
+      id: 'avd-scv',
+      slug: 'org',
+      url: 'https://snyk.io/org/org',
+      group: {
+        name: 'group',
+        id: 'group-1',
+      },
+    };
+    const htmlData = await generateHtmlReport(
+      ORG_ID,
+      licenseRes,
+      orgData,
+      undefined,
+      undefined,
+      {
+        excludeSnykFields: true,
+      }
+    );
+    expect(htmlData).toMatchSnapshot();
+  }, 80000);
   test.todo('Test for when API fails aka bad org id provided');
 });
