@@ -8,5 +8,5 @@ dist
 package-lock.json
 yarn.lock
 .eslintcache
-*-org-licenses.html
-*-project-dependencies.html
+./*-org-licenses.html
+./*-project-dependencies.html

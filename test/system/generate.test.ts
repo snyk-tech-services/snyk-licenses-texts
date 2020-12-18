@@ -40,9 +40,44 @@ describe('`snyk-licenses-report generate <...>`', () => {
     );
   });
 
+  it('Shows error when --excludeSnykFields is used with project-dependencies view', async (done) => {
+    exec(
+      `node ${main} generate  --orgPublicId=${ORG_ID} --excludeSnykFields --view=project-dependencies`,
+      {
+        env: {
+          PATH: process.env.PATH,
+          SNYK_TOKEN: process.env.SNYK_TEST_TOKEN,
+        },
+      },
+      (err, stdout, stderr) => {
+        expect(stdout).toBe('');
+        expect(err).toBeNull();
+        expect(stderr.trim()).toMatchSnapshot();
+        done();
+      },
+    );
+  });
+
   it('generated the report successfully with default params', (done) => {
     exec(
       `node ${main} generate --orgPublicId=${ORG_ID}`,
+      {
+        env: {
+          PATH: process.env.PATH,
+          SNYK_TOKEN: process.env.SNYK_TEST_TOKEN,
+        },
+      },
+      (err, stdout) => {
+        expect(err).toBeNull();
+        expect(stdout).toMatch('HTML license report saved at');
+        done();
+      },
+    );
+  }, 80000);
+
+  it('generated the report successfully with project-dependencies view', (done) => {
+    exec(
+      `node ${main} generate --orgPublicId=${ORG_ID} --view=project-dependencies`,
       {
         env: {
           PATH: process.env.PATH,

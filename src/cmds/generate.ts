@@ -42,6 +42,10 @@ export const builder = {
     desc: 'Report format',
     choices: [OutputFormat.HTML],
   },
+  excludeSnykFields: {
+    desc:
+      'Choose to exclude Snyk information. Excluded information: organization name, organization links, license severities in Snyk, license instructions, Snyk project information.',
+  },
   view: {
     choices: [SupportedViews.ORG_LICENSES, SupportedViews.PROJECT_DEPENDENCIES],
     default: SupportedViews.ORG_LICENSES,
@@ -56,15 +60,17 @@ export const builder = {
 };
 export const aliases = ['g'];
 
-export async function handler(argv: {
-  orgPublicId: string;
-  outputFormat: OutputFormat;
-  template: string;
-  view: SupportedViews;
-  project?: string | string[];
-}) {
+export async function handler(argv: GenerateOptions) {
   try {
-    const { orgPublicId, outputFormat, template, view, project } = argv;
+    validateOptions(argv);
+    const {
+      orgPublicId,
+      outputFormat,
+      template,
+      view,
+      project,
+      excludeSnykFields = false,
+    } = argv;
     debug(
       'ℹ️  Options: ' +
         JSON.stringify({
@@ -92,6 +98,9 @@ export async function handler(argv: {
       orgData,
       template,
       view,
+      {
+        excludeSnykFields,
+      },
     );
     const generateReportFunc = outputHandlers[outputFormat];
     const reportFileName = `${generateReportName(
@@ -104,5 +113,22 @@ export async function handler(argv: {
     );
   } catch (e) {
     console.error(e.message || e);
+  }
+}
+
+interface GenerateOptions {
+  orgPublicId: string;
+  outputFormat: OutputFormat;
+  template: string;
+  view: SupportedViews;
+  project?: string | string[];
+  excludeSnykFields?: boolean;
+}
+function validateOptions(argv: GenerateOptions) {
+  const { view, excludeSnykFields = false } = argv;
+  if (excludeSnykFields && view === SupportedViews.PROJECT_DEPENDENCIES) {
+    throw new Error(
+      `--excludeSnykFields is not supported with with ${SupportedViews.PROJECT_DEPENDENCIES} view as Snyk project information is required`,
+    );
   }
 }

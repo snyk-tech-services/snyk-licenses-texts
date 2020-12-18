@@ -31,6 +31,10 @@
       margin-top: .85em;
     }
 
+    .license-text {
+      white-space: pre-line;
+    }
+
     .banner-container {
       padding: 0 1.25rem;
     }
@@ -143,19 +147,23 @@
 
   <main class="u-padding--xl">
     <h1>Snyk Licenses Attribution Report</h1>
-    <h2>Organization: <a href="{{orgData.url}}">{{orgData.name}}</a></h2>
+    {{#if includeSnykFields}}
+      <h2>Organization: <a href="{{orgData.url}}">{{orgData.name}}</a></h2>
+    {{/if}}
     {{#each licenses}}
     <div class="u-padding-top--sm">
       <h1>
         <a href="{{licenseUrl}}">{{id}}</a>
       </h1>
-      <strong>Severities</strong>:
-      {{#each severities}}
-      "{{ this }}",
-      {{/each}}
-      {{#if instructions}}
-      <strong>Legal Instructions</strong>: {{instructions}}
-      {{/if}}
+      {{#if ../includeSnykFields}}
+        <strong>Severities</strong>:
+        {{#each severities}}
+        "{{ this }}",
+        {{/each}}
+        {{#if instructions}}
+        <strong>Legal Instructions</strong>: {{instructions}}
+        {{/if}}
+      {{/if }}
     </div>
 
     <div class="display-flex border-right border-top border-bottom border-left u-margin-top--sm">
@@ -189,6 +197,7 @@
           </div>
         </div>
       </div>
+      {{#if ../includeSnykFields}}
       <div class="column border-left">
         <div class="border-bottom u-padding--sm">
           <strong>Projects in Snyk</strong>
@@ -199,11 +208,12 @@
           {{/each}}
         </div>
       </div>
+      {{/if}}
       <div class="border-left overflow-auto">
         <div class="border-bottom u-padding--sm">
           <strong>License Text</strong>
         </div>
-        <div class="u-padding--sm">{{{licenseText}}}</div>
+        <div class="u-padding--sm license-text">{{{licenseText}}}</div>
       </div>
     </div>
     </div>
