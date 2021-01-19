@@ -19,8 +19,20 @@ export async function fetchSpdxLicenseTextAndUrl(
       throw new Error(rawHtml);
     }
     const $ = cheerio.load(rawHtml);
-    const licenseText = $('body').text();
-    return { licenseText, licenseUrl };
+    const licenseText = $('[property="spdx:licenseText"]')
+      .text()
+      .replace(/\n\s*\n/g, '\n');
+    const licenseTextHeader = $('[property="spdx:standardLicenseHeader"]')
+      .text()
+      .replace(/\n\s*\n/g, '\n');
+    return {
+      licenseText: `LICENSE TEXT\n${licenseText}${
+        licenseTextHeader
+          ? `\nSTANDARD LICENSE HEADER\n ${licenseTextHeader}`
+          : undefined
+      }`,
+      licenseUrl,
+    };
   } catch (e) {
     debug(`Did not fetch license text successfully. Error: ${e}`);
     throw e;
