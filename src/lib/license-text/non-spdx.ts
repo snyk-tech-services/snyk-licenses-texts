@@ -14,7 +14,7 @@ export async function fetchNonSpdxLicenseTextAndUrl(
       'utf-8',
     );
     const licenseUrl = nonSpdxLicenseUrls[licenseId];
-    return { licenseText, licenseUrl };
+    return { licenseText: `LICENSE TEXT\n${licenseText}`, licenseUrl };
   } catch (e) {
     debug(`Did not fetch license text successfully. Error: ${e}`);
     throw e;

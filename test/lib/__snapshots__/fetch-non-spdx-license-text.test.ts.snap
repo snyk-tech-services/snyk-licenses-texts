@@ -2,7 +2,8 @@
 
 exports[`ASPSecurityKit-Khosla-Tech license fetched locally as expected 1`] = `
 Object {
-  "licenseText": "<h1>KHOSLA TECH - END USER AGREEMENT</h1>
+  "licenseText": "LICENSE TEXT
+<h1>KHOSLA TECH - END USER AGREEMENT</h1>
 <p><strong>IMPORTANT – PLEASE READ THIS AGREEMENT!</strong></p>
 <div>
     <ul>
