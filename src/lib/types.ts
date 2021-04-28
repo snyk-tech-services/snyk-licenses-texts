@@ -5,7 +5,7 @@ export interface Dependency {
   packageManager: string;
 }
 
-export type LicenseSeverity = 'none' | 'high' | 'medium' | 'low';
+export type LicenseSeverity = 'none' | 'critical' | 'high' | 'medium' | 'low';
 export type EnrichedDependency = Dependency & Partial<DependencyData>;
 
 export interface LicenseReportDataEntry {
@@ -82,6 +82,10 @@ export interface DependencyData {
    * The package type of the dependency
    */
   type: string;
+   /**
+   * The number of critical severity issues in this dependency
+   */
+  issuesCritical?: number;
   /**
    * The number of high severity issues in this dependency
    */
