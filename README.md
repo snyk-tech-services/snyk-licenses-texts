@@ -9,6 +9,8 @@ Snyk helps you find, fix and monitor for known vulnerabilities in your dependenc
 ## Snyk snyk-licenses-texts
 Snyk Licenses Report that provides Organization level licenses used, copyrights & dependencies data (including license texts & their urls).
 
+# Installation
+Download the latest binary from the [releases](https://github.com/snyk-tech-services/snyk-licenses-texts/releases) page
 ## Usage
 Ensure `SNYK_TOKEN` is set and has access to the Organization you want to generate the report for.
 
