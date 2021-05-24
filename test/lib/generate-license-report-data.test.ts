@@ -39,7 +39,7 @@ describe('Get org licenses', () => {
         (dep) => dep.id === 'color-support@1.1.3',
       )[0].copyright,
     ).toEqual(['Copyright (c) Isaac Z. Schlueter and Contributors']);
-  }, 80000);
+  }, 90000);
 
   test.only('License data is generated as expected', async () => {
     const licenseRes = await generateLicenseData(ORG_ID, {
@@ -69,7 +69,7 @@ describe('Get org licenses', () => {
         (dep) => dep.id === 'color-support@1.1.3',
       )[0].copyright,
     ).toEqual(['Copyright (c) Isaac Z. Schlueter and Contributors']);
-  }, 80000);
+  }, 90000);
 
   test.todo('Test for when API fails aka bad org id provided');
 });

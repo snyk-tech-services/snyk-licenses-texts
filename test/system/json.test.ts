@@ -20,7 +20,7 @@ describe('`snyk-licenses-report json <...>`', () => {
         done();
       },
     );
-  }, 80000);
+  }, 90000);
   it('Generated JSON data with correct --orgPublicId', async (done) => {
     exec(
       `node ${main} json --orgPublicId=${ORG_ID}`,
@@ -36,7 +36,7 @@ describe('`snyk-licenses-report json <...>`', () => {
         done();
       },
     );
-  }, 80000);
+  }, 90000);
   it('Generated JSON data with correct --orgPublicId --project', async (done) => {
     exec(
       `node ${main} json --orgPublicId=${ORG_ID} --project=${PROJECT_ID}}`,
@@ -52,5 +52,5 @@ describe('`snyk-licenses-report json <...>`', () => {
         done();
       },
     );
-  }, 80000);
+  }, 90000);
 });
