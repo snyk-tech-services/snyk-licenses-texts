@@ -32,7 +32,7 @@ describe('Generate HTML report', () => {
     };
     const htmlData = await generateHtmlReport(ORG_ID, licenseRes, orgData);
     expect(htmlData).toMatchSnapshot();
-  }, 90000);
+  }, 120000);
 
   test('License HTML Report is generated as expected with project based view', async () => {
     const licenseRes = (loadJson(
@@ -56,7 +56,7 @@ describe('Generate HTML report', () => {
       SupportedViews.PROJECT_DEPENDENCIES,
     );
     expect(htmlData).toMatchSnapshot();
-  }, 90000);
+  }, 120000);
 
   test('License HTML Report is generated as expected with a custom hbs template', async () => {
     const licenseRes = (loadJson(
@@ -79,7 +79,7 @@ describe('Generate HTML report', () => {
       path.resolve(__dirname + '/fixtures/custom-view.hbs'),
     );
     expect(htmlData).toMatchSnapshot();
-  }, 90000);
+  }, 120000);
   test('License HTML Report is generated as expected with excludeSnykFields enabled', async () => {
     const licenseRes = (loadJson(
       __dirname + '/fixtures/example-license-data.json',
@@ -105,6 +105,6 @@ describe('Generate HTML report', () => {
       }
     );
     expect(htmlData).toMatchSnapshot();
-  }, 90000);
+  }, 120000);
   test.todo('Test for when API fails aka bad org id provided');
 });
