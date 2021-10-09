@@ -44,7 +44,7 @@
     "node-fetch": "2.6.2",
     "p-map": "4.0.0",
     "puppeteer": "5.4.1",
-    "snyk-api-ts-client": "1.7.2",
+    "snyk-api-ts-client": "1.7.3",
     "snyk-config": "4.0.0",
     "snyk-request-manager": "1.4.1",
     "source-map-support": "^0.5.16",
