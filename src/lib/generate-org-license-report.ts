@@ -36,7 +36,9 @@ export async function generateLicenseData(
     const licenseData = await getLicenseDataForOrg(orgPublicId, options);
     if (!licenseData.total) {
       debug(`ℹ️  Detected 0 licenses`);
-      throw new Error("No licenses returned from /licenses Snyk API. Please make sure the org has licenses configured and try again.");
+      throw new Error(
+        'No licenses returned from /licenses Snyk API. Please make sure the org has licenses configured and try again.',
+      );
     }
     debug(`✅ Got license API data for Org:${orgPublicId}`);
     const dependenciesDataRaw = await getDependenciesDataForOrg(
@@ -46,7 +48,9 @@ export async function generateLicenseData(
     if (!dependenciesDataRaw.total || dependenciesDataRaw.total === 0) {
       debug(`ℹ️  API returned 0 dependencies`);
     } else {
-      debug(`✅ Got ${dependenciesDataRaw.total} dependencies API data for Org: ${orgPublicId}`);
+      debug(
+        `✅ Got ${dependenciesDataRaw.total} dependencies API data for Org: ${orgPublicId}`,
+      );
     }
     let licenseReportData: LicenseReportData = {};
     const dependenciesData = _.groupBy(dependenciesDataRaw.results, 'id');
@@ -114,7 +118,9 @@ export async function mergeLicenceAndDepData(
 ): Promise<LicenseReportData> {
   const licenseReportData: LicenseReportData = {};
 
-  for (const license of licenseData.results) {
+  const flatLicenses = separateMultiLicenses(licenseData.results);
+
+  for (const license of flatLicenses) {
     const dependencies = license.dependencies;
     if (!dependencies.length) {
       continue;
@@ -143,4 +149,33 @@ export async function mergeLicenceAndDepData(
     }
   }
   return licenseReportData;
+}
+
+function splitMultipleLicenses(license: string) {
+  return license.split(/ OR | AND /);
+}
+
+function multipleLicenses(license: string) {
+  return license.includes('OR') || license.includes('AND');
+}
+
+function separateMultiLicenses(licenseData: any[]): any[] {
+  const processesLicenses = [];
+  for (const license of licenseData) {
+    if (multipleLicenses(license.id)) {
+      const licenses = splitMultipleLicenses(license.id);
+      debug('Splitting up a multi license', licenses);
+
+      licenses.forEach((l) => {
+        processesLicenses.push({
+          ...license,
+          id: l,
+        });
+      });
+    } else {
+      processesLicenses.push(license);
+    }
+  }
+
+  return processesLicenses;
 }
