@@ -1,7 +1,9 @@
 import 'source-map-support/register';
-import * as fetch from 'node-fetch';
+import * as nodeFetch from 'node-fetch';
 import * as debugLib from 'debug';
 import * as cheerio from 'cheerio';
+
+const fetch = nodeFetch.default;
 
 export async function fetchSpdxLicenseTextAndUrl(
   licenseId: string,

@@ -1,5 +1,4 @@
 import * as debugLib from 'debug';
-import * as pathLib from 'path';
 import * as _ from 'lodash';
 
 import { getApiToken } from '../lib/get-api-token';
@@ -14,15 +13,24 @@ import { SupportedViews } from '../lib/types';
 import { saveHtmlReport, savePdfReport } from '../lib/generate-output';
 const debug = debugLib('snyk-licenses:generate');
 
-const outputHandlers = {
-  [OutputFormat.HTML]: saveHtmlReport,
-  [OutputFormat.PDF]: savePdfReport,
-};
-
 const enum OutputFormat {
   HTML = 'html',
   PDF = 'pdf',
 }
+
+function validateOptions(argv: GenerateOptions): void {
+  const { view, excludeSnykFields = false } = argv;
+  if (excludeSnykFields && view === SupportedViews.PROJECT_DEPENDENCIES) {
+    throw new Error(
+      `--excludeSnykFields is not supported with with ${SupportedViews.PROJECT_DEPENDENCIES} view as Snyk project information is required`,
+    );
+  }
+}
+
+const outputHandlers = {
+  [OutputFormat.HTML]: saveHtmlReport,
+  [OutputFormat.PDF]: savePdfReport,
+};
 
 export const desc =
   'Generate org licenses & dependencies report in HTML format';
@@ -60,7 +68,7 @@ export const builder = {
 };
 export const aliases = ['g'];
 
-export async function handler(argv: GenerateOptions) {
+export async function handler(argv: GenerateOptions): Promise<void> {
   try {
     validateOptions(argv);
     const {
@@ -123,12 +131,4 @@ interface GenerateOptions {
   view: SupportedViews;
   project?: string | string[];
   excludeSnykFields?: boolean;
-}
-function validateOptions(argv: GenerateOptions) {
-  const { view, excludeSnykFields = false } = argv;
-  if (excludeSnykFields && view === SupportedViews.PROJECT_DEPENDENCIES) {
-    throw new Error(
-      `--excludeSnykFields is not supported with with ${SupportedViews.PROJECT_DEPENDENCIES} view as Snyk project information is required`,
-    );
-  }
 }
