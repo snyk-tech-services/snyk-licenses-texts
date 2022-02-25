@@ -30,7 +30,8 @@ describe('Generate HTML report', () => {
         id: 'group-1',
       },
     };
-    const htmlData = await generateHtmlReport(ORG_ID, licenseRes, orgData);
+    const date = new Date('2022-02-22').toLocaleDateString();
+    const htmlData = await generateHtmlReport(ORG_ID, licenseRes, orgData, undefined, undefined, date);
     expect(htmlData).toMatchSnapshot();
   }, 120000);
 
@@ -48,12 +49,14 @@ describe('Generate HTML report', () => {
         id: 'group-1',
       },
     };
+    const date = new Date('2022-02-22').toLocaleDateString();
     const htmlData = await generateHtmlReport(
       ORG_ID,
       licenseRes,
       orgData,
       undefined,
       SupportedViews.PROJECT_DEPENDENCIES,
+      date,
     );
     expect(htmlData).toMatchSnapshot();
   }, 120000);
@@ -72,11 +75,14 @@ describe('Generate HTML report', () => {
         id: 'group-1',
       },
     };
+    const date = new Date('2022-02-22').toLocaleDateString();
     const htmlData = await generateHtmlReport(
       ORG_ID,
       licenseRes,
       orgData,
       path.resolve(__dirname + '/fixtures/custom-view.hbs'),
+      undefined,
+      date,
     );
     expect(htmlData).toMatchSnapshot();
   }, 120000);
@@ -94,12 +100,14 @@ describe('Generate HTML report', () => {
         id: 'group-1',
       },
     };
+    const date = new Date('2022-02-22').toLocaleDateString();
     const htmlData = await generateHtmlReport(
       ORG_ID,
       licenseRes,
       orgData,
       undefined,
       undefined,
+      date,
       {
         excludeSnykFields: true,
       }

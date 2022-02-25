@@ -98,6 +98,7 @@ export async function handler(argv: GenerateOptions) {
       orgData,
       template,
       view,
+      undefined,
       {
         excludeSnykFields,
       },
