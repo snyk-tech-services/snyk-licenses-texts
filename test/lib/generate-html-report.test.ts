@@ -33,7 +33,7 @@ describe('Generate HTML report', () => {
     const date = new Date('2022-02-22').toLocaleDateString();
     const htmlData = await generateHtmlReport(ORG_ID, licenseRes, orgData, undefined, undefined, date);
     expect(htmlData).toMatchSnapshot();
-  }, 120000);
+  }, 150000);
 
   test('License HTML Report is generated as expected with project based view', async () => {
     const licenseRes = (loadJson(
@@ -59,7 +59,7 @@ describe('Generate HTML report', () => {
       date,
     );
     expect(htmlData).toMatchSnapshot();
-  }, 120000);
+  }, 150000);
 
   test('License HTML Report is generated as expected with a custom hbs template', async () => {
     const licenseRes = (loadJson(
@@ -85,7 +85,7 @@ describe('Generate HTML report', () => {
       date,
     );
     expect(htmlData).toMatchSnapshot();
-  }, 120000);
+  }, 150000);
   test('License HTML Report is generated as expected with excludeSnykFields enabled', async () => {
     const licenseRes = (loadJson(
       __dirname + '/fixtures/example-license-data.json',
@@ -113,6 +113,6 @@ describe('Generate HTML report', () => {
       }
     );
     expect(htmlData).toMatchSnapshot();
-  }, 120000);
+  }, 150000);
   test.todo('Test for when API fails aka bad org id provided');
 });

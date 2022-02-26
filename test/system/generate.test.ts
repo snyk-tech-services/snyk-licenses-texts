@@ -73,7 +73,7 @@ describe('`snyk-licenses-report generate <...>`', () => {
         done();
       },
     );
-  }, 120000);
+  }, 150000);
 
   it('generated the report successfully with project-dependencies view', (done) => {
     exec(
@@ -90,7 +90,7 @@ describe('`snyk-licenses-report generate <...>`', () => {
         done();
       },
     );
-  }, 120000);
+  }, 150000);
 
   it.skip('generated the report successfully as PDF', (done) => {
     exec(
@@ -107,7 +107,7 @@ describe('`snyk-licenses-report generate <...>`', () => {
         done();
       },
     );
-  }, 120000);
+  }, 150000);
   it('generated the report successfully with custom template', (done) => {
     exec(
       `node ${main} generate --orgPublicId=${ORG_ID} --template=${__dirname +
@@ -124,7 +124,7 @@ describe('`snyk-licenses-report generate <...>`', () => {
         done();
       },
     );
-  }, 120000);
+  }, 150000);
   it.todo('API is down');
   it.todo('Requested org has no licenses policy');
 });
