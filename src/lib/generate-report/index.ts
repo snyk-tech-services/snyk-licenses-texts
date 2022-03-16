@@ -22,6 +22,7 @@ export async function generateHtmlReport(
   orgData: OrgData,
   templateOverridePath: string | undefined = undefined,
   view: SupportedViews = SupportedViews.ORG_LICENSES,
+  reportDate = new Date().toLocaleDateString(),
   options: {
     excludeSnykFields: boolean;
   } = {
@@ -42,6 +43,7 @@ export async function generateHtmlReport(
     orgPublicId,
     data,
     orgData,
+    reportDate,
     options,
   );
   return htmlTemplate(transformedData);
@@ -51,6 +53,7 @@ function transformDataForLicenseView(
   orgPublicId: string,
   data: LicenseReportData,
   orgData: OrgData,
+  reportDate: string,
   options: {
     excludeSnykFields: boolean;
   } = {
@@ -61,8 +64,10 @@ function transformDataForLicenseView(
   orgPublicId: string;
   orgData: OrgData;
   includeSnykFields: boolean;
+  reportGenerationDate: string;
 } {
   return {
+    reportGenerationDate: reportDate,
     licenses: data,
     orgPublicId,
     orgData,
@@ -85,11 +90,13 @@ function transformDataForDependencyView(
   orgPublicId: string,
   data: LicenseReportData,
   orgData: OrgData,
+  reportDate: string,
 ): {
   projects: ProjectsReportData;
   orgPublicId: string;
   orgData: OrgData;
   totalProjects: number;
+  reportGenerationDate: string;
 } {
   const projectData: ProjectsReportData = {};
   let totalProjects = 0;
@@ -115,6 +122,7 @@ function transformDataForDependencyView(
   }
 
   return {
+    reportGenerationDate: reportDate,
     projects: projectData,
     orgPublicId,
     orgData,
