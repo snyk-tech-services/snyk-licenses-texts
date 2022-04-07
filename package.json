@@ -38,7 +38,7 @@
   "dependencies": {
     "@snyk/configstore": "^3.2.0-rc1",
     "cheerio": "1.0.0-rc.3",
-    "debug": "4.3.3",
+    "debug": "4.3.4",
     "handlebars": "4.7.7",
     "lodash": "4.17.21",
     "node-fetch": "2.6.7",
