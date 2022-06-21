@@ -31,9 +31,7 @@
         "latestVersionPublishedDate": "2020-02-13T17:43:52.531Z",
         "firstPublishedDate": "2012-11-13T15:43:50.942Z",
         "isDeprecated": false,
-        "copyright": [
-          "Copyright (c) Google"
-        ]
+        "copyright": ["Copyright (c) Google"]
       }
     ],
     "projects": [
