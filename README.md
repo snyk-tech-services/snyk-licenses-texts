@@ -3,6 +3,9 @@
 ***
 
 [![Known Vulnerabilities](https://snyk.io/test/github/snyk-tech-services/snyk-licenses-texts/badge.svg)](https://snyk.io/test/github/snyk-tech-services/snyk-licenses-texts)
+[![Not Maintained](https://img.shields.io/badge/Maintenance%20Level-Not%20Maintained-yellow.svg)](https://gist.github.com/cheerfulstoic/d107229326a01ff0f333a1d3476e068d)
+
+**This repository is not in active development and critical bug fixes only will be considered.**
 
 Snyk helps you find, fix and monitor for known vulnerabilities in your dependencies, both on an ad hoc basis and as part of your CI (Build) system.
 
