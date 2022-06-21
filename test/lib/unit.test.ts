@@ -94,7 +94,7 @@ describe('enrichDependencies', () => {
 
 describe('mergeLicenceAndDepData', () => {
   test('mergeLicenceAndDepData returns the same number of licenses & deps as provided', async () => {
-    const licenseData = ({
+    const licenseData = {
       results: [
         {
           id: 'ISC',
@@ -134,7 +134,7 @@ describe('mergeLicenceAndDepData', () => {
           ],
         },
       ],
-    } as unknown) as snykApiSdk.OrgTypes.LicensesPostResponseType;
+    } as unknown as snykApiSdk.OrgTypes.LicensesPostResponseType;
 
     const depApiData = {
       'abbrev@1.0.9': [
@@ -180,7 +180,7 @@ describe('mergeLicenceAndDepData', () => {
     ).toEqual(depApiData['abbrev@1.0.9'][0].copyright);
   });
   test('mergeLicenceAndDepData for a multi license returns extra licenses after separating multi licenses', async () => {
-    const licenseData = ({
+    const licenseData = {
       results: [
         {
           id: 'ISC OR MIT',
@@ -220,7 +220,7 @@ describe('mergeLicenceAndDepData', () => {
           ],
         },
       ],
-    } as unknown) as snykApiSdk.OrgTypes.LicensesPostResponseType;
+    } as unknown as snykApiSdk.OrgTypes.LicensesPostResponseType;
 
     const depApiData = {
       'abbrev@1.0.9': [

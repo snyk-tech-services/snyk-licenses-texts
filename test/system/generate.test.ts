@@ -110,8 +110,9 @@ describe('`snyk-licenses-report generate <...>`', () => {
   }, 150000);
   it('generated the report successfully with custom template', (done) => {
     exec(
-      `node ${main} generate --orgPublicId=${ORG_ID} --template=${__dirname +
-        '/fixtures/custom-view.hbs'}`,
+      `node ${main} generate --orgPublicId=${ORG_ID} --template=${
+        __dirname + '/fixtures/custom-view.hbs'
+      }`,
       {
         env: {
           PATH: process.env.PATH,

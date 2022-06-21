@@ -17,9 +17,9 @@ describe('Generate HTML report', () => {
     expect(process.env.ORG_ID).not.toBeNull();
   });
   test('License HTML Report is generated as expected', async () => {
-    const licenseRes = (loadJson(
+    const licenseRes = loadJson(
       __dirname + '/fixtures/example-license-data.json',
-    ) as unknown) as LicenseReportData;
+    ) as unknown as LicenseReportData;
     const orgData = {
       name: 'org',
       id: 'avd-scv',
@@ -31,14 +31,21 @@ describe('Generate HTML report', () => {
       },
     };
     const date = new Date('2022-02-22').toLocaleDateString();
-    const htmlData = await generateHtmlReport(ORG_ID, licenseRes, orgData, undefined, undefined, date);
+    const htmlData = await generateHtmlReport(
+      ORG_ID,
+      licenseRes,
+      orgData,
+      undefined,
+      undefined,
+      date,
+    );
     expect(htmlData).toMatchSnapshot();
   }, 150000);
 
   test('License HTML Report is generated as expected with project based view', async () => {
-    const licenseRes = (loadJson(
+    const licenseRes = loadJson(
       __dirname + '/fixtures/example-license-data.json',
-    ) as unknown) as LicenseReportData;
+    ) as unknown as LicenseReportData;
     const orgData = {
       name: 'org',
       id: 'avd-scv',
@@ -62,9 +69,9 @@ describe('Generate HTML report', () => {
   }, 150000);
 
   test('License HTML Report is generated as expected with a custom hbs template', async () => {
-    const licenseRes = (loadJson(
+    const licenseRes = loadJson(
       __dirname + '/fixtures/example-license-data.json',
-    ) as unknown) as LicenseReportData;
+    ) as unknown as LicenseReportData;
     const orgData = {
       name: 'org',
       id: 'avd-scv',
@@ -87,9 +94,9 @@ describe('Generate HTML report', () => {
     expect(htmlData).toMatchSnapshot();
   }, 150000);
   test('License HTML Report is generated as expected with excludeSnykFields enabled', async () => {
-    const licenseRes = (loadJson(
+    const licenseRes = loadJson(
       __dirname + '/fixtures/example-license-data.json',
-    ) as unknown) as LicenseReportData;
+    ) as unknown as LicenseReportData;
     const orgData = {
       name: 'org',
       id: 'avd-scv',
@@ -110,7 +117,7 @@ describe('Generate HTML report', () => {
       date,
       {
         excludeSnykFields: true,
-      }
+      },
     );
     expect(htmlData).toMatchSnapshot();
   }, 150000);
