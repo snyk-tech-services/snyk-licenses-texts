@@ -10,7 +10,9 @@
 Snyk helps you find, fix and monitor for known vulnerabilities in your dependencies, both on an ad hoc basis and as part of your CI (Build) system.
 
 ## Snyk snyk-licenses-texts
-Snyk Licenses Report that provides Organization level licenses used, copyrights & dependencies data (including license texts & their urls).
+Snyk Licenses Text report that provides Organization level licenses used, copyrights & dependencies data (including license texts & their urls). Optionally the results can be filtered for a specific projects.
+
+The tool is a wrapper around [Snyk APIs](https://snyk.docs.apiary.io/) so users must have API access (including Reporting, Licenses & Dependencies APIs)
 
 # Installation
 Download the latest binary from the [releases](https://github.com/snyk-tech-services/snyk-licenses-texts/releases) page
@@ -19,21 +21,27 @@ Ensure `SNYK_TOKEN` is set and has access to the Organization you want to genera
 
 ### Basic CLI commands
 - `help` - show help & all available commands and their options
-- `json` - generate the raw JSON licenses & dependencies data
-- `generate` - generates an HTML report of licenses & dependencies data
+- `json` - generate the raw JSON licenses & dependencies data for a Snyk Organization (can filter for a specific Snyk project)
+- `generate` - generates an HTML report of licenses & dependencies data for a Snyk Organization (can filter for a specific Snyk project)
 
 ### Supported Options
+```
+Commands:
+  snyk-licenses-text generate  Generate org licenses & dependencies report in HTML format
+                                                                    [aliases: g]
+  snyk-licenses-text json      Generate org licenses & dependencies data in JSON format
+                                                                    [aliases: j]
+
+```
 Example usage:
-- See help:
-  `snyk-licenses-report help`
-- Get JSON output only:
-  `snyk-licenses-report json --orgPublicId=<ORG_PUBLIC_ID>`
-- Default HTML report (Licenses per Org view):
-  `snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID>`
-- See more information on what is hapenning behind the scenes:
-  `DEBUG=snyk-license* snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID>`
+- See help: `snyk-licenses-text --help`
+- See help and available options for a specific command: `snyk-licenses-text --help generate`
+- Get JSON output only:  `snyk-licenses-text json --orgPublicId=<ORG_PUBLIC_ID>`
+- Default HTML report (Licenses per Org view):  `snyk-licenses-text generate --orgPublicId=<ORG_PUBLIC_ID>`
+- Default HTML report (Licenses per Org view) filtered for a specific project:  `snyk-licenses-text generate --orgPublicId=<ORG_PUBLIC_ID> --project=<PROJECT_PUBLIC_ID>`
+- See more information on what is happening behind the scenes: `DEBUG=snyk-license* snyk-licenses-text generate --orgPublicId=<ORG_PUBLIC_ID>`
 - Custom Handlebars.js template provided:
-  `snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID> --template="PATH/TO/TEMPLATE/template.hsb"`
+  `snyk-licenses-text generate --orgPublicId=<ORG_PUBLIC_ID> --template="PATH/TO/TEMPLATE/template.hsb"`
   The data in the template is available is in the format:
   ```
   {
