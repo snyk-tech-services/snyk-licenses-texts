@@ -149,9 +149,9 @@ async function compileTemplate(
   );
 }
 
-function readFile(filePath: string, encoding: string): Promise<string> {
+function readFile(filePath: string, encoding: BufferEncoding): Promise<string> {
   return new Promise<string>((resolve, reject) => {
-    fs.readFile(filePath, encoding, (err, data) => {
+    fs.readFile(filePath, { encoding }, (err, data) => {
       if (err) {
         reject(err);
       }
