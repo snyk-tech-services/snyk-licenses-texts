@@ -33,7 +33,10 @@ export async function generateLicenseData(
   debug(`ℹ️  Generating license data for Org:${orgPublicId}`);
 
   try {
-    const licenseData = await getLicenseDataForOrg(orgPublicId, options);
+    const [licenseData, dependenciesDataRaw] = await Promise.all([
+      getLicenseDataForOrg(orgPublicId, options),
+      getDependenciesDataForOrg(orgPublicId, options),
+    ]);
     if (!licenseData.total) {
       debug(`ℹ️  Detected 0 licenses`);
       throw new Error(
@@ -41,10 +44,6 @@ export async function generateLicenseData(
       );
     }
     debug(`✅ Got license API data for Org:${orgPublicId}`);
-    const dependenciesDataRaw = await getDependenciesDataForOrg(
-      orgPublicId,
-      options,
-    );
     if (!dependenciesDataRaw.total || dependenciesDataRaw.total === 0) {
       debug(`ℹ️  API returned 0 dependencies`);
     } else {

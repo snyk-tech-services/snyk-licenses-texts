@@ -41,9 +41,10 @@ async function getAllDependenciesData(
     results: [],
     total: undefined,
   };
-  const perPage = 20; // this is a max on that endpoint
+  const perPage = 20; // 1000 is a max on that endpoint, however anything other than 20 is not working
 
   let currentPage = page;
+
   let hasMorePages = true;
 
   while (hasMorePages) {

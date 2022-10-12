@@ -4,7 +4,6 @@ import * as snykApiSdk from 'snyk-api-ts-client';
 import { getApiToken } from '../../get-api-token';
 import { requestsManager } from 'snyk-request-manager';
 import { GetLicenseDataOptions } from '../../types';
-import { number } from 'yargs';
 
 const debug = debugLib('snyk-licenses:getLicenseDataForOrg');
 
