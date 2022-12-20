@@ -28,21 +28,21 @@ Ensure `SNYK_TOKEN` is set and has access to the Organization you want to genera
 ### Supported Options
 ```
 Commands:
-  snyk-licenses-text generate  Generate org licenses & dependencies report in HTML format
+  snyk-licenses-report generate  Generate org licenses & dependencies report in HTML format
                                                                     [aliases: g]
-  snyk-licenses-text json      Generate org licenses & dependencies data in JSON format
+  snyk-licenses-report json      Generate org licenses & dependencies data in JSON format
                                                                     [aliases: j]
 
 ```
 Example usage:
-- See help: `snyk-licenses-text --help`
-- See help and available options for a specific command: `snyk-licenses-text --help generate`
-- Get JSON output only:  `snyk-licenses-text json --orgPublicId=<ORG_PUBLIC_ID>`
-- Default HTML report (Licenses per Org view):  `snyk-licenses-text generate --orgPublicId=<ORG_PUBLIC_ID>`
-- Default HTML report (Licenses per Org view) filtered for a specific project:  `snyk-licenses-text generate --orgPublicId=<ORG_PUBLIC_ID> --project=<PROJECT_PUBLIC_ID>`
-- See more information on what is happening behind the scenes: `DEBUG=snyk-license* snyk-licenses-text generate --orgPublicId=<ORG_PUBLIC_ID>`
+- See help: `snyk-licenses-report --help`
+- See help and available options for a specific command: `snyk-licenses-report --help generate`
+- Get JSON output only:  `snyk-licenses-report json --orgPublicId=<ORG_PUBLIC_ID>`
+- Default HTML report (Licenses per Org view):  `snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID>`
+- Default HTML report (Licenses per Org view) filtered for a specific project:  `snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID> --project=<PROJECT_PUBLIC_ID>`
+- See more information on what is happening behind the scenes: `DEBUG=snyk-license* snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID>`
 - Custom Handlebars.js template provided:
-  `snyk-licenses-text generate --orgPublicId=<ORG_PUBLIC_ID> --template="PATH/TO/TEMPLATE/template.hsb"`
+  `snyk-licenses-report generate --orgPublicId=<ORG_PUBLIC_ID> --template="PATH/TO/TEMPLATE/template.hsb"`
   The data in the template is available is in the format:
   ```
   {
