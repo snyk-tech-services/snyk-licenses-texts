@@ -15,7 +15,7 @@
     "build-watch": "tsc -w && npm run copy:templates",
     "prepare": "npm run build",
     "snyk-test": "snyk test",
-    "copy:templates": "cpx 'src/**/*.hbs' ./dist"
+    "copy:templates": "cpx 'src/**/*.{hbs,html}' ./dist"
   },
   "bin": {
     "snyk-licenses-report": "dist/index.js"
