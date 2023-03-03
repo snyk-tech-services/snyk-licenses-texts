@@ -23,7 +23,7 @@ export async function fetchNonSpdxLicenseTextAndUrl(
 
 const nonSpdxLicenseUrls = {
   'EDL-1.0': 'https://www.eclipse.org/org/documents/edl-v10.html',
-  HSQLDB: 'http://hsqldb.org/web/hsqlLicense.html',
+  'HSQLDB': 'http://hsqldb.org/web/hsqlLicense.html',
   'PayPal-SDK': 'https://github.com/paypal/PayPal-Ruby-SDK/blob/master/LICENSE',
   'Microsoft-Lightswitch-Client-Javascript-Runtime':
     'https://go.microsoft.com/fwlink/?LinkID=286972',
@@ -32,7 +32,7 @@ const nonSpdxLicenseUrls = {
   'Microsoft-.NET-Library':
     'https://dotnet.microsoft.com/en/dotnet_library_license.htm',
 
-  Neodynamic: 'https://www.neodynamic.com/eula/',
+  'Neodynamic': 'https://www.neodynamic.com/eula/',
 
   'bpmn.io': 'https://bpmn.io/license/',
 
@@ -55,12 +55,12 @@ const nonSpdxLicenseUrls = {
   'amCharts-Free':
     'https://github.com/amcharts/amcharts4/blob/master/dist/script/LICENSE',
 
-  Highsoft: 'https://www.highcharts.com/license',
+  'Highsoft': 'https://www.highcharts.com/license',
 
   'Oracle-Technology-Network':
     'https://www.oracle.com/downloads/licenses/distribution-license.html',
 
-  Protobuf: 'https://github.com/protocolbuffers/protobuf/blob/master/LICENSE',
+  'Protobuf': 'https://github.com/protocolbuffers/protobuf/blob/master/LICENSE',
 
   'SpecFlow-EULA': 'https://specflow.org/plus/eula/',
 };
