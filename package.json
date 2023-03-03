@@ -52,6 +52,7 @@
     "yargs": "17.6.0"
   },
   "devDependencies": {
+    "@semantic-release/exec": "5.0.0",
     "@types/cheerio": "0.22.31",
     "@types/jest": "29.1.2",
     "@types/lodash": "4.14.186",
@@ -62,6 +63,7 @@
     "eslint": "8.18.0",
     "jest": "26.4.2",
     "prettier": "2.7.1",
+    "semantic-release": "17.3.0",
     "ts-jest": "25.5.1",
     "ts-node": "8.6.2",
     "tsc-watch": "^4.1.0",
