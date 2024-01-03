@@ -6,7 +6,9 @@
 [![Inactively Maintained](https://img.shields.io/badge/Maintenance%20Level-Inactively%20Maintained-yellowgreen.svg)](https://gist.github.com/cheerfulstoic/d107229326a01ff0f333a1d3476e068d)
 
 
-**This repository is in maintenance mode, no new features are being developed. Bug & security fixes will continue to be delivered. Open source contributions are welcome for small features & fixes (no breaking changes)**
+:warning: **This repository is in maintenance mode, no new features are being developed. Bug & security fixes will continue to be delivered. Open source contributions are welcome for small features & fixes (no breaking changes)**
+
+:warning: **Please note that as of January 8, 2024 copyright data will no longer be available due to [Copyright Service End-of-Life](https://updates.snyk.io/snyk-open-source-upcoming-end-of-life-notice-for-copyright-service-effective-january-8-2024-280362)**
 
 Snyk helps you find, fix and monitor for known vulnerabilities in your dependencies, both on an ad hoc basis and as part of your CI (Build) system.
 
