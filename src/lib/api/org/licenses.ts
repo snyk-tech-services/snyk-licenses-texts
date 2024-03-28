@@ -36,7 +36,7 @@ async function getAllLicensesData(
   requestManager: requestsManager,
   orgPublicId: string,
   body: snykApiSdk.OrgTypes.LicensesPostBodyType,
-  page = 1,
+  page = 0,
 ): Promise<snykApiSdk.OrgTypes.LicensesPostResponseType> {
   const dependenciesData = {
     results: [],

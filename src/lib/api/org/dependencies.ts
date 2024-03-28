@@ -35,7 +35,7 @@ async function getAllDependenciesData(
   requestManager,
   orgPublicId,
   body,
-  page = 1,
+  page = 0,
 ): Promise<snykApiSdk.OrgTypes.DependenciesPostResponseType> {
   const dependenciesData = {
     results: [],
