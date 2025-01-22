@@ -10,6 +10,11 @@ export async function fetchSpdxLicenseTextAndUrl(
     // The SPDX name for Public Domain license is Unlicense.
     licenseId = 'Unlicense';
   }
+  if(licenseId === 'GPL-2.0') {
+    // The SPDX id for GPL-2.0 is deprecated, change it to GPL-2.0-only
+    licenseId = 'GPL-2.0-only';
+  }
+
   const debug = debugLib('snyk-licenses:fetchSpdxLicenseText');
   const licenseUrl = `https://spdx.org/licenses/${licenseId}.html`;
   try {
